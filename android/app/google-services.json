@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "568224520975",
+    "project_id": "easyrental-c1e2f",
+    "storage_bucket": "easyrental-c1e2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568224520975:android:69d7f8d6112926fe56fc7a",
+        "android_client_info": {
+          "package_name": "com.example.easy_rental_nepal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568224520975-g8brakstttf8ohj19tq69b8ck7qa29ll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhjQzHjZBmuvRaSF-jg0WGag9fSriTe34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568224520975-g8brakstttf8ohj19tq69b8ck7qa29ll.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "568224520975-roavjip55rf0eko33strsita7r1l55g3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.easyRentalNepal.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
