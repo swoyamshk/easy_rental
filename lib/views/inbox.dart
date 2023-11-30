@@ -1,10 +1,6 @@
-import 'package:easy_rental_nepal/views/emailSignup.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/bottom_bar.dart';
-import '../components/signup_tile.dart';
 
 class Inbox extends StatefulWidget {
   @override
@@ -14,15 +10,12 @@ class Inbox extends StatefulWidget {
 }
 
 class inboxState extends State<Inbox> {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body:
-        Text("Inbox"),
-        //bottomNavigationBar: BottomBar(),
+        body: Text("Inbox"),
+        bottomNavigationBar: BottomBar(),
       ),
     );
   }

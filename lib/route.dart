@@ -3,10 +3,12 @@ import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:easy_rental_nepal/views/bookings.dart';
 import 'package:easy_rental_nepal/views/contact_us.dart';
 import 'package:easy_rental_nepal/views/emailSignup.dart';
+import 'package:easy_rental_nepal/views/helpcenter.dart';
 import 'package:easy_rental_nepal/views/home.dart';
 import 'package:easy_rental_nepal/views/inbox.dart';
 import 'package:easy_rental_nepal/views/login.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
+import 'package:easy_rental_nepal/views/rent.dart';
 import 'package:easy_rental_nepal/views/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -27,12 +29,14 @@ class RouteGen{
         return MaterialPageRoute(builder: (_) => Profile());
       case '/booking':
         return MaterialPageRoute(builder: (_) => Booking());
+      case '/helpcenter':
+        return MaterialPageRoute(builder: (_) =>HelpCenter());
       case '/contact':
-        return MaterialPageRoute(builder: (_) => Contact());
+        return MaterialPageRoute(builder: (_) => ContactUs());
+      case '/rent':
+        return MaterialPageRoute(builder: (_) => RentPage());
       case '/map':
         return MaterialPageRoute(builder: (_) => const MapSample());
-
-
       default:
         return _errorRoute();
     }

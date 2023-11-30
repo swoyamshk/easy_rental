@@ -1,10 +1,9 @@
-import 'package:easy_rental_nepal/views/emailSignup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../components/bottom_bar.dart';
 import '../components/signup_tile.dart';
+import '../global/globalColors.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -14,9 +13,6 @@ class Login extends StatefulWidget {
 }
 
 class loginState extends State<Login> {
-  static const Color fontColor = Color(0xFF234568);
-  static const Color boxColor = Color(0xFFF4F4F4);
-
   TextEditingController passwordcontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
 
@@ -50,7 +46,7 @@ class loginState extends State<Login> {
   Future<void> signInWithEmailAndPassword() async {
     try {
       UserCredential userCredential =
-      await _firebaseAuth.signInWithEmailAndPassword(
+          await _firebaseAuth.signInWithEmailAndPassword(
         email: emailcontroller.text.trim(),
         password: passwordcontroller.text.trim(),
       );
@@ -77,7 +73,6 @@ class loginState extends State<Login> {
           padding: EdgeInsets.only(top: 100),
           child: Center(
             child: Column(
-
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
@@ -91,12 +86,11 @@ class loginState extends State<Login> {
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
-                    color: fontColor,
+                    color: GlobalColors.fontColor,
                   ),
                 ),
                 const SizedBox(height: 10),
                 Container(
-
                   padding: const EdgeInsets.only(left: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -105,13 +99,13 @@ class loginState extends State<Login> {
                   width: size.width / 1.3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:<Widget> [
+                    children: <Widget>[
                       Container(
                         height: 50,
                         width: 339,
                         margin: const EdgeInsets.only(bottom: 15),
                         decoration: BoxDecoration(
-                          color: boxColor,
+                          color: GlobalColors.boxColor,
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
@@ -130,7 +124,7 @@ class loginState extends State<Login> {
                         width: 339,
                         margin: const EdgeInsets.only(bottom: 15),
                         decoration: BoxDecoration(
-                          color: boxColor,
+                          color: GlobalColors.boxColor,
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
@@ -149,7 +143,7 @@ class loginState extends State<Login> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              signInWithEmailAndPassword();
+                              Navigator.pushNamed(context, '/home');
                             },
                             child: Container(
                               height: 45,
@@ -172,7 +166,6 @@ class loginState extends State<Login> {
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
@@ -226,13 +219,10 @@ class loginState extends State<Login> {
                     SizedBox(width: 10),
                     SignUpTile(
                       imagePath: 'assets/apple.png',
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
-
-
               ],
             ),
           ),

@@ -1,9 +1,7 @@
-import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../views/emailSignup.dart';
 
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -28,10 +26,7 @@ signInWithGoogle(context)async{
       var login = await _firebaseAuth.signInWithCredential(credential);
       print("Firebase Sign-In Result: ${login.toString()}");
       if(login.user != null){
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => MapSample()),
-        );
+        Navigator.of(context).pushNamed('/home');
       }
     }
 

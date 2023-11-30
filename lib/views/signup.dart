@@ -1,26 +1,18 @@
-// ignore_for_file: use_build_context_synchronously
-
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../services/auth_services.dart';
-import 'emailSignup.dart';
 
 class signup extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return signupstate();
-
   }
 }
 
 class signupstate extends State<signup> {
   //final FirebaseAuthService _auth = FirebaseAuthService();
   static const Color fontColor = Color(0xFF234568);
+
   @override
   @override
   Widget build(BuildContext context) {
@@ -31,9 +23,9 @@ class signupstate extends State<signup> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/logo.png', // Replace with the actual path to your image
-                height: 200, // Adjust the height as needed
-                width: 150, // Adjust the width as needed
+                'assets/logo.png',
+                height: 200,
+                width: 150,
               ),
               SizedBox(height: 10),
               Text(
@@ -75,7 +67,6 @@ class signupstate extends State<signup> {
               SizedBox(height: 10),
               _signUpWithEmail(),
               SizedBox(height: 10),
-
             ],
           ),
         ),
@@ -89,9 +80,9 @@ class signupstate extends State<signup> {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.all(15),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           side: BorderSide(color: Color(0xFF1877F2)),
-          primary: Color(0xFF1877F2),
         ),
         onPressed: () {},
         child: Row(
@@ -106,21 +97,18 @@ class signupstate extends State<signup> {
     );
   }
 
-
-
-
   Widget _signUpWithGoogle() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30),
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.all(15),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           side: BorderSide(color: Color(0xFFDB4437)),
-          primary: Color(0xFFDB4437),
         ),
         onPressed: () {
-           signInWithGoogle(context);
+          signInWithGoogle(context);
           // AuthService().signInWithGoogle();
         },
         child: Row(
@@ -141,13 +129,11 @@ class signupstate extends State<signup> {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.all(15),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           side: BorderSide(color: Color(0xFF000000)),
-          primary: Color(0xFF000000),
         ),
-        onPressed: () {
-
-        },
+        onPressed: () {},
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -166,9 +152,9 @@ class signupstate extends State<signup> {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.all(15),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           side: BorderSide(color: Color(0xFF777777)),
-          primary: Color(0xFF777777),
         ),
         onPressed: () {
           Navigator.pushNamed(context, '/emailsignup');
@@ -178,9 +164,10 @@ class signupstate extends State<signup> {
           children: <Widget>[
             Icon(Icons.email, color: Color(0xFF777777)),
             SizedBox(width: 10),
-            Text('Continue with Email', style: TextStyle(fontSize: 18),),
-
-
+            Text(
+              'Continue with Email',
+              style: TextStyle(fontSize: 18),
+            ),
           ],
         ),
       ),

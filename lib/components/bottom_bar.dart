@@ -1,8 +1,5 @@
-import 'package:easy_rental_nepal/views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
-import '../views/emailSignup.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -25,23 +22,23 @@ class BottomBarState extends State<BottomBar> {
       onTap: (i) => onTabTapped(i),
       items: [
         SalomonBottomBarItem(
-          icon: Icon(Icons.home),
-          title: Text("Home"),
+          icon: const Icon(Icons.home),
+          title: const Text("Home"),
           selectedColor: Colors.purple,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Icons.favorite_border),
-          title: Text("Inbox"),
+          icon: const Icon(Icons.inbox_outlined),
+          title: const Text("Inbox"),
           selectedColor: Colors.pink,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Icons.search),
-          title: Text("Bookings"),
+          icon: const Icon(Icons.search),
+          title: const Text("Bookings"),
           selectedColor: Colors.orange,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Icons.person),
-          title: Text("Profile"),
+          icon: const Icon(Icons.person),
+          title: const Text("Profile"),
           selectedColor: Colors.teal,
         ),
       ],
@@ -53,23 +50,18 @@ class BottomBarState extends State<BottomBar> {
       _currentIndex = index;
     });
 
-    // Handle navigation based on the selected tab
     switch (index) {
       case 0:
-      // Navigate to the Home page
         Navigator.pushNamed(context, '/home');
         break;
       case 1:
-      // Navigate to the Inbox page
         Navigator.pushNamed(context, '/inbox');
         break;
       case 2:
-      // Navigate to the Bookings page
-        Navigator.pushNamed(context, '/booking'); // Replace '/bookings' with the actual route for the Bookings page
+        Navigator.pushNamed(context, '/rent');
         break;
       case 3:
-      // Navigate to the Profile page
-        Navigator.pushNamed(context, '/profile'); // Replace '/profile' with the actual route for the Profile page
+        Navigator.pushNamed(context, '/helpcenter');
         break;
     }
   }
