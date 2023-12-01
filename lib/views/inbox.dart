@@ -1,22 +1,34 @@
+import 'package:easy_rental_nepal/services/auth_services.dart';
 import 'package:flutter/material.dart';
 
-import '../components/bottom_bar.dart';
 
 class Inbox extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return inboxState();
+    return InboxState();
   }
 }
 
-class inboxState extends State<Inbox> {
+class InboxState extends State<Inbox> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Text("Inbox"),
-        bottomNavigationBar: BottomBar(),
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 200),
+color: Colors.red,
+            child: GestureDetector(
+              onTap: () {
+                print('Tapped on logout icon');
+                signOutUser(context);
+              },
+              child: Icon(Icons.logout),
+            ),
+          ),
+        ],
       ),
+      // bottomNavigationBar: BottomBar(),
     );
   }
 }

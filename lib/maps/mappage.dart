@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../components/bottom_bar.dart';
-
 class MapSample extends StatefulWidget {
   const MapSample({super.key});
 
@@ -83,7 +81,7 @@ class MapSampleState extends State<MapSample> {
         label: const Text('Go!'),
         icon: const Icon(Icons.directions_boat),
       ),
-      bottomNavigationBar: BottomBar(),
+
     );
   }
 

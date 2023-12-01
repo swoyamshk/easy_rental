@@ -1,10 +1,5 @@
-import 'package:easy_rental_nepal/views/emailSignup.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../components/bottom_bar.dart';
-import '../components/signup_tile.dart';
 
 class Booking extends StatefulWidget {
   @override
@@ -22,7 +17,6 @@ class bookingState extends State<Booking> {
       home: Scaffold(
         body:
         Text("Booking"),
-        //bottomNavigationBar: BottomBar(),
       ),
     );
   }

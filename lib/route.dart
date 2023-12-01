@@ -1,4 +1,3 @@
-
 import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:easy_rental_nepal/views/bookings.dart';
 import 'package:easy_rental_nepal/views/contact_us.dart';
@@ -9,15 +8,13 @@ import 'package:easy_rental_nepal/views/inbox.dart';
 import 'package:easy_rental_nepal/views/login.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:easy_rental_nepal/views/rent.dart';
-import 'package:easy_rental_nepal/views/signup.dart';
+
 import 'package:flutter/material.dart';
 
-class RouteGen{
-  static Route<dynamic> generateRoute(RouteSettings settings){
-    switch (settings.name){
+class RouteGen {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => signup());
-      case '/emailsignup':
         return MaterialPageRoute(builder: (_) => emailSignup());
       case '/login':
         return MaterialPageRoute(builder: (_) => Login());
@@ -30,7 +27,7 @@ class RouteGen{
       case '/booking':
         return MaterialPageRoute(builder: (_) => Booking());
       case '/helpcenter':
-        return MaterialPageRoute(builder: (_) =>HelpCenter());
+        return MaterialPageRoute(builder: (_) => HelpCenter());
       case '/contact':
         return MaterialPageRoute(builder: (_) => ContactUs());
       case '/rent':
@@ -41,19 +38,15 @@ class RouteGen{
         return _errorRoute();
     }
   }
-  static Route<dynamic> _errorRoute(){
+
+  static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
-        appBar: AppBar(
-            title: Text("Error")),
+        appBar: AppBar(title: Text("Error")),
         body: Center(
           child: Text("Error"),
         ),
       );
-    }
-    );
-
+    });
   }
 }
-
-

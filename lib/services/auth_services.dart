@@ -36,3 +36,24 @@ signInWithGoogle(context)async{
   }
 
 }
+void signOutUser(BuildContext context) async {
+  try {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacementNamed(context, '/login');
+  } catch (e) {
+    print("Error signing out: $e");
+    // Handle sign-out errors if needed
+  }
+}
+class FirebaseAuthServices {
+  Future<User?> signUp(String email, String password) async {
+    try {
+      UserCredential credential = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      return credential.user;
+    } catch (e) {
+      print("Error Signing Up");
+    }
+    return null;
+  }
+}

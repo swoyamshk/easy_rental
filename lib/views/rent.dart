@@ -4,11 +4,9 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_rental_nepal/global/globalShadow.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import '../components/bottom_bar.dart';
 import '../global/globalColors.dart';
 
 class RentPage extends StatefulWidget {
@@ -116,11 +114,13 @@ class RentPageState extends State<RentPage> {
         child: Column(children: [
           Row(
             children: [
-              SvgPicture.asset(
-                'assets/arrowback.svg',
-                height: 30,
-                width: 30,
-              ),
+              GestureDetector(
+                child: (Icon(Icons.arrow_back)),
+                  onTap: (){
+                Navigator.pushNamed(context, '/home');
+
+              },
+                ),
               Text(
                 "Rent a vehicle",
                 style: TextStyle(

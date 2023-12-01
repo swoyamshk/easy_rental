@@ -1,7 +1,10 @@
+import 'package:easy_rental_nepal/maps/mappage.dart';
+import 'package:easy_rental_nepal/views/helpcenter.dart';
+import 'package:easy_rental_nepal/views/inbox.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_rental_nepal/modules/car_tiles.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../components/bottom_bar.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,12 +14,12 @@ class Home extends StatefulWidget {
 }
 
 class homeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-            child: Column(
+  var _currentIndex = 0;
+
+  final PageController _pageController = PageController();
+  homewidget(){
+    return Center(
+        child: Column(
           children: [
             const SizedBox(height: 60),
             Padding(
@@ -51,17 +54,23 @@ class homeState extends State<Home> {
                       color: const Color.fromARGB(176, 0, 0, 0),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: const Center(
-                      child: Text(
-                        "Rent a Car",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/rent');
+                      },
+                      child: const Center(
+                        child: Text(
+                          "Rent a Car",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),
@@ -149,9 +158,64 @@ class homeState extends State<Home> {
               ),
             ),
           ],
-        )),
-        bottomNavigationBar: const BottomBar(),
+        ));
+  }
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      body: PageView(
+        onPageChanged: (int index){
+          setState(() {
+            onTabTapped(index);
+          });
+        },
+        controller: _pageController,
+        children: <Widget>[
+        homewidget(),
+        Inbox(),
+        MapSample(),
+        HelpCenter()
+        ],
+      ),
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: _currentIndex,
+        onTap: (i) => onTabTapped(i),
+        items: [
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.home),
+            title: const Text("Home"),
+            selectedColor: Colors.purple,
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.inbox_outlined),
+            title: const Text("Inbox"),
+            selectedColor: Colors.pink,
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.search),
+            title: const Text("Bookings"),
+            selectedColor: Colors.orange,
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.person),
+            title: const Text("Profile"),
+            selectedColor: Colors.teal,
+          ),
+        ],
       ),
     );
   }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+      _pageController.jumpToPage(_currentIndex);
+    });
+
+
+
+
+
+  }
+
 }

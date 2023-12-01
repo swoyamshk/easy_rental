@@ -1,4 +1,3 @@
-import 'package:easy_rental_nepal/components/bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -153,7 +152,7 @@ class HelpCenterState extends State<HelpCenter> {
               ),
             ),
           ),
-          bottomNavigationBar: BottomBar()),
-    );
+          //bottomNavigationBar: BottomBar()),
+    ));
   }
 }
