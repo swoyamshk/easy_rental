@@ -35,7 +35,7 @@ class emailSignupstate extends State<emailSignup> {
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 25.0),
+                  padding: const EdgeInsets.only(top: 50.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[

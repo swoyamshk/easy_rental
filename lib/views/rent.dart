@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_rental_nepal/global/globalShadow.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -50,21 +51,24 @@ class RentPageState extends State<RentPage> {
     print("File uploaded to: $downloadURL");
     return downloadURL;
   }
+
+
   Future<void> saveDetails(
       {required String model,
         required String seatings,
         required String details,
         required String imgPath}) async {
     try {
-      // Reference to the Firestore collection
       CollectionReference vehiclesCollection =
       FirebaseFirestore.instance.collection('rent-details');
+      User? user = FirebaseAuth.instance.currentUser;
 
       await vehiclesCollection.add({
         'model': model,
         'seatings': seatings,
         'details': details,
         'img': imgPath,
+        'userId': user?.uid,
       });
 
       print('Data added to Firestore successfully');
@@ -81,10 +85,9 @@ class RentPageState extends State<RentPage> {
     }
 
     try {
-      // Use pickedFile.path directly
       String imgPath = pickedFile!.path!;
 
-      // Ensure the file path is not empty before saving details
+
       if (imgPath.isNotEmpty) {
         final model = modelcontroller.text;
         final seatings = seatingscontroller.text;
@@ -104,177 +107,166 @@ class RentPageState extends State<RentPage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 80, left: 20),
-        child: Column(children: [
-          Row(
-            children: [
-              GestureDetector(
-                child: (Icon(Icons.arrow_back)),
-                  onTap: (){
+          appBar: AppBar(
+            leading:  IconButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/home');
-
               },
-                ),
-              Text(
-                "Rent a vehicle",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Column(
-            children: [
-              Container(
-                height: 50,
-                width: 339,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: GlobalColors.boxColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [CustomBoxShadow()],
-                ),
-                child: Center(
-                  child: TextField(
-                    controller: modelcontroller,
-                    decoration: InputDecoration(
-                      hintText: 'Enter Car Model',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(15),
+              icon: Icon(Icons.arrow_back, size: 30.0),
+            ),
+            title: Row(
+
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 0),
+                  child:
+                  Text(
+                    "Rent a Car",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                 ),
+              ],
+            ),
+            backgroundColor: GlobalColors.fontColor,
+          ),
+          body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 30, left: 20),
+        child: Column(
+          children: [
+            Container(
+              height: 50,
+              width: 339,
+              margin: const EdgeInsets.only(bottom: 15),
+              decoration: BoxDecoration(
+                color: GlobalColors.boxColor,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [CustomBoxShadow()],
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 50,
-                width: 339,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: GlobalColors.boxColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [CustomBoxShadow()],
-                ),
-                child: Center(
-                  child: TextField(
-                    controller: seatingscontroller,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter Car Seatings',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(15),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 50,
-                width: 339,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: GlobalColors.boxColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [CustomBoxShadow()],
-                ),
-                padding: EdgeInsets.only(left: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text('Upload Images'),
-                      ),
-                    GestureDetector(
-                      onTap: () {
-                        selectFile();
-                      },
-                      child: Icon(Icons.file_upload_outlined),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 200,
-                width: 339,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: GlobalColors.boxColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [CustomBoxShadow()],
-                ),
+              child: Center(
                 child: TextField(
-                  controller: detailscontroller,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
+                  controller: modelcontroller,
                   decoration: InputDecoration(
-                    hintText: 'Enter Car Description',
+                    hintText: 'Enter Car Model',
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.all(15),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 50,
+              width: 339,
+              margin: const EdgeInsets.only(bottom: 15),
+              decoration: BoxDecoration(
+                color: GlobalColors.boxColor,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [CustomBoxShadow()],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Center(
+                child: TextField(
+                  controller: seatingscontroller,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter Car Seatings',
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.all(15),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 50,
+              width: 339,
+              margin: const EdgeInsets.only(bottom: 15),
+              decoration: BoxDecoration(
+                color: GlobalColors.boxColor,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [CustomBoxShadow()],
+              ),
+              padding: EdgeInsets.only(left: 15),
+              child: Row(
                 children: [
+                  Expanded(
+                    child: Text('Upload Images'),
+                    ),
                   GestureDetector(
                     onTap: () {
-                      uploadAndSave();
+                      selectFile();
                     },
-                    child: Container(
-                      height: 45,
-                      width: 246,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(176, 0, 0, 0),
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [CustomBoxShadow()],
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.normal,
-                          ),
+                    child: Icon(Icons.file_upload_outlined),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 200,
+              width: 339,
+              margin: const EdgeInsets.only(bottom: 15),
+              decoration: BoxDecoration(
+                color: GlobalColors.boxColor,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [CustomBoxShadow()],
+              ),
+              child: TextField(
+                controller: detailscontroller,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: InputDecoration(
+                  hintText: 'Enter Car Description',
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.all(15),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    uploadAndSave();
+                  },
+                  child: Container(
+                    height: 45,
+                    width: 246,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(176, 0, 0, 0),
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [CustomBoxShadow()],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-              // if (pickedFile != null)
-              //   Column(
-              //     children: [
-              //       Image.network('https://firebasestorage.googleapis.com/v0/b/easyrental-c1e2f.appspot.com/o/files%2FScreenshot%202023-11-29%20151608.png?alt=media&token=fbe1a337-6bba-47bf-9263-b9febab469c3'),
-              //       // Image.file(
-              //       //   File(pickedFile?.path ?? ''),
-              //       //   width: 200,
-              //       //   height: 300,
-              //       //   fit: BoxFit.cover,
-              //       // ),
-              //     ],
-              //   ),
-            ],
-          )
-        ]),
+                ),
+              ],
+            ),
+          ],
+        ),
       )),
       //bottomNavigationBar: BottomBar(),
     );

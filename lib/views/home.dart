@@ -1,9 +1,12 @@
 import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:easy_rental_nepal/views/helpcenter.dart';
-import 'package:easy_rental_nepal/views/inbox.dart';
+import 'package:easy_rental_nepal/views/history.dart';
+import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_rental_nepal/modules/car_tiles.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
+import '../global/globalShadow.dart';
 
 
 class Home extends StatefulWidget {
@@ -32,14 +35,20 @@ class homeState extends State<Home> {
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(176, 0, 0, 0),
                       borderRadius: BorderRadius.circular(30),
+                      boxShadow: [CustomBoxShadow()],
                     ),
-                    child: const Center(
-                      child: Text(
-                        "Book Now",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/book');
+                      },
+                      child: const Center(
+                        child: Text(
+                          "Book Now",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                     ),
@@ -53,6 +62,7 @@ class homeState extends State<Home> {
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(176, 0, 0, 0),
                       borderRadius: BorderRadius.circular(30),
+                      boxShadow: [CustomBoxShadow()],
                     ),
                     child: GestureDetector(
                       onTap: () {
@@ -140,18 +150,8 @@ class homeState extends State<Home> {
                         height: 20,
                       ),
                       CarTiles(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CarTiles(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CarTiles(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CarTiles(),
+
+
                     ],
                   ),
                 ],
@@ -173,8 +173,8 @@ class homeState extends State<Home> {
         children: <Widget>[
         homewidget(),
         Inbox(),
-        MapSample(),
-        HelpCenter()
+        HelpCenter(),
+        Profile()
         ],
       ),
       bottomNavigationBar: SalomonBottomBar(
@@ -187,19 +187,19 @@ class homeState extends State<Home> {
             selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
-            icon: const Icon(Icons.inbox_outlined),
-            title: const Text("Inbox"),
-            selectedColor: Colors.pink,
+            icon: const Icon(Icons.history),
+            title: const Text("History"),
+            selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
-            icon: const Icon(Icons.search),
-            title: const Text("Bookings"),
-            selectedColor: Colors.orange,
+            icon: const Icon(Icons.help_center_outlined),
+            title: const Text("Help Center"),
+            selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.person),
             title: const Text("Profile"),
-            selectedColor: Colors.teal,
+            selectedColor: Colors.purple,
           ),
         ],
       ),

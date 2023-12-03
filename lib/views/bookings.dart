@@ -9,8 +9,6 @@ class Booking extends StatefulWidget {
 }
 
 class bookingState extends State<Booking> {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

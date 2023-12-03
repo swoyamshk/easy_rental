@@ -1,10 +1,11 @@
 import 'package:easy_rental_nepal/maps/mappage.dart';
+import 'package:easy_rental_nepal/views/book.dart';
 import 'package:easy_rental_nepal/views/bookings.dart';
-import 'package:easy_rental_nepal/views/contact_us.dart';
+import 'package:easy_rental_nepal/components/contact_us.dart';
 import 'package:easy_rental_nepal/views/emailSignup.dart';
 import 'package:easy_rental_nepal/views/helpcenter.dart';
 import 'package:easy_rental_nepal/views/home.dart';
-import 'package:easy_rental_nepal/views/inbox.dart';
+import 'package:easy_rental_nepal/views/history.dart';
 import 'package:easy_rental_nepal/views/login.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:easy_rental_nepal/views/rent.dart';
@@ -34,6 +35,8 @@ class RouteGen {
         return MaterialPageRoute(builder: (_) => RentPage());
       case '/map':
         return MaterialPageRoute(builder: (_) => const MapSample());
+      case '/book':
+        return MaterialPageRoute(builder: (_) => BookTiles());
       default:
         return _errorRoute();
     }

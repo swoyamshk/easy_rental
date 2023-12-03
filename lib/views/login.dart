@@ -62,11 +62,20 @@ class loginState extends State<Login> {
     return MaterialApp(
       home: Scaffold(
         body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: 100),
+          padding: EdgeInsets.only(top: 70),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 320),
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, '/');
+                    },
+                    icon: new Icon(Icons.arrow_back, size: 30.0),
+                  ),
+                ),
                 Image.asset(
                   'assets/logo.png',
                   height: 200,
@@ -86,7 +95,6 @@ class loginState extends State<Login> {
                   padding: const EdgeInsets.only(left: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-
                   ),
                   height: size.height / 4.5,
                   width: size.width / 1.3,
