@@ -3,110 +3,150 @@ import 'package:flutter/material.dart';
 class ContactUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Padding(
       padding: const EdgeInsets.only(top: 15, left: 0),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 45, right: 0),
-              child: Container(
-                height: size.height / 12,
-                width: size.width / 1.4,
-                decoration: BoxDecoration(
+        child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                const SizedBox(height: 10),
+                ContainerWithShadow(
+                  height: 60,
+                  width: 300,
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 80),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Enter Title Here',
-                          contentPadding:
-                          EdgeInsets.symmetric(vertical: 20.0),
-                          alignLabelWithHint: true,
-                        ),
+                  child: const Row(
+                    children: [
+                      Icon(Icons.mail, size: 30, color: Colors.black),
+                      SizedBox(width: 20),
+                      Text(
+                        'Email Us',
+                        style: TextStyle(fontSize: 18),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30, left: 80),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Enter Title Here',
-                  contentPadding: EdgeInsets.symmetric(vertical: 20.0),
-                  alignLabelWithHint: true,
+                const SizedBox(height: 10),
+                ContainerWithShadow(
+                  height: 60,
+                  width: 300,
+                  color: Colors.white,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.cleaning_services,
+                          size: 30, color: Colors.black),
+                      SizedBox(width: 20),
+                      Text(
+                        'Whatsapp',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 60, left: 80),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Enter Title Here',
-                  contentPadding: EdgeInsets.symmetric(vertical: 20.0),
-                  alignLabelWithHint: true,
+                const SizedBox(height: 10),
+                ContainerWithShadow(
+                  height: 60,
+                  width: 300,
+                  color: Colors.white,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.whatshot, size: 30, color: Colors.black),
+                      SizedBox(width: 20),
+                      Text(
+                        'Contact us',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 90, left: 80),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Enter Title Here',
-                  contentPadding: EdgeInsets.symmetric(vertical: 20.0),
-                  alignLabelWithHint: true,
+                const SizedBox(height: 10),
+                ContainerWithShadow(
+                  height: 60,
+                  width: 300,
+                  color: Colors.white,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.facebook, size: 30, color: Colors.black),
+                      SizedBox(width: 20),
+                      Text(
+                        'Facebook',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 120, left: 80),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Enter Title Here',
-                  contentPadding: EdgeInsets.symmetric(vertical: 20.0),
-                  alignLabelWithHint: true,
+                const SizedBox(height: 10),
+                ContainerWithShadow(
+                  height: 60,
+                  width: 300,
+                  color: Colors.white,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.earbuds_battery,
+                          size: 30, color: Colors.black),
+                      SizedBox(width: 20),
+                      Text(
+                        'Support',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 160, left: 80),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Enter Title Here',
-                  contentPadding: EdgeInsets.symmetric(vertical: 20.0),
-                  alignLabelWithHint: true,
+                const SizedBox(height: 10),
+                ContainerWithShadow(
+                  height: 60,
+                  width: 300,
+                  color: Colors.white,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.tiktok, size: 30, color: Colors.black),
+                      SizedBox(width: 20),
+                      Text(
+                        'Tiktok',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class ContainerWithShadow extends StatelessWidget {
+  final Widget child;
+  final double? height;
+  final double? width;
+  final Color? color;
+
+  ContainerWithShadow(
+      {required this.child, this.height, this.width, this.color});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      padding: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: color ?? Colors.white,
+        borderRadius: BorderRadius.circular(45.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: child,
     );
   }
 }

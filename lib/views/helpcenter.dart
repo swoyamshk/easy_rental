@@ -1,7 +1,6 @@
 import 'package:easy_rental_nepal/components/feedback.dart';
 import 'package:flutter/material.dart';
 import '../global/globalColors.dart';
-import '../global/globalShadow.dart';
 import '../components/contact_us.dart';
 
 class HelpCenter extends StatefulWidget {
@@ -18,15 +17,15 @@ class HelpCenterState extends State<HelpCenter> {
       length: 2, // Number of tabs
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Padding(
-            padding: EdgeInsets.only(left: 0),
+            padding: EdgeInsets.only(left: 10),
             child: Text(
               "Help Center",
-              style: TextStyle(color: Colors.white, fontSize: 26),
+              style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.normal),
             ),
 
           ),
-          leading: const Icon(Icons.arrow_back, color: Colors.white, size: 30),
           backgroundColor: GlobalColors.fontColor,
           bottom: TabBar(
             indicatorColor: Colors.white,

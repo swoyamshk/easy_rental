@@ -21,8 +21,8 @@ class RouteGen {
         return MaterialPageRoute(builder: (_) => Login());
       case '/home':
         return MaterialPageRoute(builder: (_) => Home());
-      case '/inbox':
-        return MaterialPageRoute(builder: (_) => Inbox());
+      case '/history':
+        return MaterialPageRoute(builder: (_) => History());
       case '/profile':
         return MaterialPageRoute(builder: (_) => Profile());
       case '/booking':

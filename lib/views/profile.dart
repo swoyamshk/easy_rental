@@ -1,6 +1,11 @@
-import 'package:easy_rental_nepal/views/home.dart';
+import 'package:easy_rental_nepal/views/edit_profile.dart';
+import 'package:easy_rental_nepal/views/helpcenter.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../components/dialogBox.dart';
+import '../global/globalColors.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -10,37 +15,21 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.only(left: 50),
+          title: const Padding(
+            padding: EdgeInsets.only(left: 10),
             child: Text(
               "Profile",
-              style: TextStyle(color: Colors.black, fontSize: 28),
+              style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.normal),
             ),
+
           ),
-          leading: GestureDetector(
-            //onTap: () {
-            //   Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => Profile()),
-            //   );
-            // },
-            child: Icon(Icons.arrow_back, color: Colors.black, size: 40),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Icon(Icons.inbox, color: Colors.black, size: 40),
-            )
-          ],
-          backgroundColor: Colors.white,
+          backgroundColor: GlobalColors.fontColor,
+
         ),
         body: Padding(
           padding: const EdgeInsets.only(left: 35),
@@ -74,7 +63,7 @@ class ProfileState extends State<Profile> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Home()),
+                    MaterialPageRoute(builder: (context) => EditProfile()),
                   );
                 },
                 child: Container(
@@ -161,6 +150,9 @@ class ProfileState extends State<Profile> {
                 ),
               ),
               GestureDetector(
+                onTap: () {
+                  HelpCenter();
+                },
                 child: Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -182,6 +174,11 @@ class ProfileState extends State<Profile> {
                 ),
               ),
               GestureDetector(
+                onTap: () {
+                  print('Tapped on logout icon');
+                  Dialogbox.logoutDialogueBox(context, "Are you sure you want to Logout?");
+
+                },
                 child: Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
