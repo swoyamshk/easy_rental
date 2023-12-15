@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_rental_nepal/components/dropDown.dart';
 import 'package:easy_rental_nepal/global/globalShadow.dart';
 import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -94,6 +95,7 @@ class RentPageState extends State<RentPage> {
 
   @override
   Widget build(BuildContext context) {
+    String? selectedVehicleType;
     return MaterialApp(
       home: Scaffold(
         appBar:  AppBar(
@@ -193,30 +195,41 @@ class RentPageState extends State<RentPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-              Container(
-                height: 200,
-                width: 339,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: GlobalColors.boxColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [CustomBoxShadow()],
-                ),
-                child: TextField(
-                  controller: detailscontroller,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: InputDecoration(
-                    hintText: 'Enter Car Description',
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(15),
-                  ),
-                ),
+              // Container(
+              //   height: 200,
+              //   width: 339,
+              //   margin: const EdgeInsets.only(bottom: 15),
+              //   decoration: BoxDecoration(
+              //     color: GlobalColors.boxColor,
+              //     borderRadius: BorderRadius.circular(30),
+              //     boxShadow: [CustomBoxShadow()],
+              //   ),
+              //   child: TextField(
+              //     controller: detailscontroller,
+              //     keyboardType: TextInputType.multiline,
+              //     maxLines: null,
+              //     decoration: InputDecoration(
+              //       hintText: 'Enter Car Description',
+              //       border: InputBorder.none,
+              //       contentPadding: EdgeInsets.all(15),
+              //     ),
+              //   ),
+              // ),
+              DropDown.buildDropdownContainer(
+                context,
+                "Select Vehicle Type",
+                ["Petrol", "Electric", "Diesel"],
+                selectedVehicleType,
+                    (String? newValue) {
+                  setState(() {
+                    selectedVehicleType = newValue;
+                  });
+                },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Container(
                 height: 50,

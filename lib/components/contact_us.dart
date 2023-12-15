@@ -19,7 +19,7 @@ class ContactUs extends StatelessWidget {
                   color: Colors.white,
                   child: const Row(
                     children: [
-                      Icon(Icons.mail, size: 30, color: Colors.black),
+                      Icon(Icons.mail, size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Email Us',
@@ -36,7 +36,7 @@ class ContactUs extends StatelessWidget {
                   child: const Row(
                     children: [
                       Icon(Icons.cleaning_services,
-                          size: 30, color: Colors.black),
+                          size:  25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Whatsapp',
@@ -52,7 +52,7 @@ class ContactUs extends StatelessWidget {
                   color: Colors.white,
                   child: const Row(
                     children: [
-                      Icon(Icons.whatshot, size: 30, color: Colors.black),
+                      Icon(Icons.whatshot, size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Contact us',
@@ -68,7 +68,7 @@ class ContactUs extends StatelessWidget {
                   color: Colors.white,
                   child: const Row(
                     children: [
-                      Icon(Icons.facebook, size: 30, color: Colors.black),
+                      Icon(Icons.facebook, size:  25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Facebook',
@@ -85,7 +85,7 @@ class ContactUs extends StatelessWidget {
                   child: const Row(
                     children: [
                       Icon(Icons.earbuds_battery,
-                          size: 30, color: Colors.black),
+                          size:  25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Support',
@@ -101,7 +101,7 @@ class ContactUs extends StatelessWidget {
                   color: Colors.white,
                   child: const Row(
                     children: [
-                      Icon(Icons.tiktok, size: 30, color: Colors.black),
+                      Icon(Icons.tiktok, size:  25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Tiktok',

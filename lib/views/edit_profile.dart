@@ -1,4 +1,3 @@
-import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:flutter/material.dart';
 
 class EditProfile extends StatefulWidget {
@@ -23,10 +22,7 @@ class EditProfileState extends State<EditProfile> {
         ),
         leading: GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Profile()),
-            );
+            Navigator.of(context).pop();
           },
           child: Icon(Icons.arrow_back, color: Colors.black, size: 40),
         ),
@@ -69,11 +65,11 @@ class EditProfileState extends State<EditProfile> {
               SizedBox(height: 20),
               _buildTextFieldContainerWithCalendar("Date of Birth"),
               SizedBox(height: 20),
-              _buildDropdownContainer("Country", ["USA", "Canada", "UK"]),
+              buildDropdownContainer("Country", ["USA", "Canada", "UK"]),
               SizedBox(height: 20),
               _buildNumberInputContainer("Phone Number"),
               SizedBox(height: 20),
-              _buildDropdownContainer("Gender", ["Male", "Female", "Other"]),
+              buildDropdownContainer("Gender", ["Male", "Female", "Other"]),
             ],
           ),
         ),
@@ -147,7 +143,7 @@ class EditProfileState extends State<EditProfile> {
     );
   }
 
-  Widget _buildDropdownContainer(String label, List<String> options) {
+  Widget buildDropdownContainer(String label, List<String> options) {
     var size = MediaQuery.of(context).size;
     return Container(
       width: size.width / 1.2,

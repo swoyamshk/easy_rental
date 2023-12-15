@@ -1,8 +1,7 @@
-import 'package:easy_rental_nepal/views/profile.dart';
+import 'package:easy_rental_nepal/views/booking_history.dart';
+import 'package:easy_rental_nepal/views/rent_history.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../components/feedback.dart';
 import '../global/globalColors.dart';
 
 class History extends StatefulWidget {
@@ -43,6 +42,6 @@ class HistoryState extends State<History> {
                 ],
               ),
             ),
-            body: TabBarView(children: [FeedbackForm(), Profile()])));
+            body: TabBarView(children: [BookingHistory(), RentHistory()])));
   }
 }
