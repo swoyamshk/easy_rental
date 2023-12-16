@@ -125,7 +125,6 @@ class homeState extends State<Home> {
                     children: [
                       Align(
                         alignment: Alignment.centerLeft,
-                        // Align text to the left
                         child: Padding(
                           padding: EdgeInsets.only(left: 40),
                           child: Text(
@@ -195,6 +194,7 @@ class homeState extends State<Home> {
           ),
         ],
       ),
+
     );
   }
 

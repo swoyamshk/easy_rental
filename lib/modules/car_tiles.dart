@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
 import '../views/car_details.dart';
+import 'car_feature.dart';
 
 class CarTiles extends StatefulWidget {
   const CarTiles({Key? key}) : super(key: key);
@@ -15,9 +16,13 @@ class CarTiles extends StatefulWidget {
   @override
   CarTilesState createState() => CarTilesState();
 }
+
 Widget carTiles(BuildContext context) {
   return StreamBuilder(
-    stream: FirebaseFirestore.instance.collection('rent-details').snapshots(),
+    stream: FirebaseFirestore.instance
+        .collection('rent-details')
+        .where('status', isEqualTo: 'available')
+        .snapshots(),
     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
         return CircularProgressIndicator();
@@ -27,7 +32,7 @@ Widget carTiles(BuildContext context) {
         var data = snapshot.data!.docs;
         return Column(
           children: [
-            for (int index = 0; index < 3; index++)
+            for (int index = 0; index < data.length; index++)
               carTileItem(context, data[index]),
           ],
         );
@@ -35,26 +40,14 @@ Widget carTiles(BuildContext context) {
     },
   );
 }
-Widget _carFeatureItem(String feature) {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Icon(Icons.check, color: Colors.green),
-      SizedBox(width: 8.0),
-      Padding(
-        padding: const EdgeInsets.only(top: 4),
-        child: Text(
-          feature,
-          style: TextStyle(fontSize: 10),
-        ),
-      ),
-    ],
-  );
-}
-Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData) {
+
+Widget carTileItem(BuildContext context,
+    QueryDocumentSnapshot<Object?> carData) {
   String imageUrl = carData.get('img');
   String carmodel = carData.get('model');
   String seatings = carData.get('seatings');
+  String vehicletype = carData.get('vehicleType');
+  String amount = carData.get('amount');
   return GestureDetector(
     onTap: () {
       // Navigate to car details page and pass car details
@@ -117,7 +110,8 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                           children: [
                             Text(
                               "Seatings: $seatings",
-                              style: TextStyle(fontSize: 14, color: GlobalColors.fontColor),
+                              style: TextStyle(
+                                  fontSize: 14, color: GlobalColors.fontColor),
                             ),
                             Icon(Icons.person, size: 18,),
                           ],
@@ -125,16 +119,38 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                         SizedBox(
                           height: 8,
                         ),
-                        _carFeatureItem('Air Conditioning'),
-                        _carFeatureItem('Manual Transmission'),
-                        _carFeatureItem('Fuel Policy'),
-                        _carFeatureItem('Meet and greet'),
+                        Row(
+                          children: [
+                            Icon(Icons.check, color: Colors.green),
+                            SizedBox(width: 8.0),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    vehicletype,
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                          ],
+                        ),
+                        carFeatureItem("Air Conditioning"),
+                        carFeatureItem("Meet and PickUp"),
+                        const SizedBox(height: 10,),
+                        Text("Rs:$amount /per hour",style: TextStyle(
+                            fontSize: 16),)
+
                       ],
+
                     ),
                   ],
                 ),
               ),
             ],
+
           ),
         ),
       ),

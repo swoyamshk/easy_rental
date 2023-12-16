@@ -24,6 +24,8 @@ class RentPageState extends State<RentPage> {
   TextEditingController modelcontroller = TextEditingController();
   TextEditingController seatingscontroller = TextEditingController();
   TextEditingController detailscontroller = TextEditingController();
+  TextEditingController vehicleTypecontroller= TextEditingController();
+  TextEditingController amountcontroller = TextEditingController();
 
   Future selectFile() async {
     final result = await FilePicker.platform.pickFiles();
@@ -36,8 +38,10 @@ class RentPageState extends State<RentPage> {
   Future<void> saveDetails({
     required String model,
     required String seatings,
-    required String details,
     required String imgPath,
+    required String status,
+    required String vehicleType,
+    required String amount,
     LatLng? location,
   }) async {
     try {
@@ -48,9 +52,11 @@ class RentPageState extends State<RentPage> {
       await vehiclesCollection.add({
         'model': model,
         'seatings': seatings,
-        'details': details,
         'img': imgPath,
         'userId': user?.uid,
+        'status': 'available',
+        'vehicleType': vehicleType,
+        'amount': amount,
         'location': location != null
             ? GeoPoint(location.latitude, location.longitude)
             : null,
@@ -60,30 +66,32 @@ class RentPageState extends State<RentPage> {
       print('Error adding data to Firestore: $error');
     }
   }
-
-
-
   Future<void> uploadAndSave() async {
     if (pickedFile == null) {
       print("No file picked");
       return;
     }
-
     try {
       String imgPath = pickedFile!.path!;
 
       if (imgPath.isNotEmpty) {
         final model = modelcontroller.text;
         final seatings = seatingscontroller.text;
-        final details = detailscontroller.text;
+        final vehicletype = vehicleTypecontroller.text;
+        final amount = amountcontroller.text;
+
+
 
         await saveDetails(
           model: model,
           seatings: seatings,
-          details: details,
           imgPath: imgPath,
           location: selectedLocation,
+          vehicleType: vehicletype,
+          amount: amount,
+          status: 'available'
         );
+
 
         print("Details and image path saved successfully");
         Dialogbox.confirmDialogueBox(context, "Your Car has been rented");
@@ -96,16 +104,15 @@ class RentPageState extends State<RentPage> {
   @override
   Widget build(BuildContext context) {
     String? selectedVehicleType;
+    String? selectedSeating;
     return MaterialApp(
       home: Scaffold(
-        appBar:  AppBar(
+        appBar:AppBar(
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pushNamed('/home');
             },
-
             icon: Icon(Icons.arrow_back, size: 30.0),
-
           ),
           backgroundColor: GlobalColors.fontColor,
           title: Text(
@@ -115,9 +122,7 @@ class RentPageState extends State<RentPage> {
               fontWeight: FontWeight.normal,
             ),
           ),
-          // ... (existing code)
         ),
-
         body: SingleChildScrollView(
           padding: EdgeInsets.only(top: 30, left: 20),
           child: Column(
@@ -145,25 +150,17 @@ class RentPageState extends State<RentPage> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 50,
-                width: 339,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: GlobalColors.boxColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [CustomBoxShadow()],
-                ),
-                child: Center(
-                  child: TextField(
-                    controller: seatingscontroller,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter Car Seatings',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(15),
-                    ),
-                  ),
-                ),
+              DropDown.buildDropdownContainer(
+                context,
+                "Enter Car Seatings",
+                ["1", "2", "3","4", "5+"],
+                selectedSeating,
+                    (String? newValue) {
+                  setState(() {
+                    selectedVehicleType = newValue;
+                    seatingscontroller.text = newValue ?? "";
+                  });
+                },
               ),
               const SizedBox(
                 height: 20,
@@ -195,41 +192,22 @@ class RentPageState extends State<RentPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
-              ),
-              // Container(
-              //   height: 200,
-              //   width: 339,
-              //   margin: const EdgeInsets.only(bottom: 15),
-              //   decoration: BoxDecoration(
-              //     color: GlobalColors.boxColor,
-              //     borderRadius: BorderRadius.circular(30),
-              //     boxShadow: [CustomBoxShadow()],
-              //   ),
-              //   child: TextField(
-              //     controller: detailscontroller,
-              //     keyboardType: TextInputType.multiline,
-              //     maxLines: null,
-              //     decoration: InputDecoration(
-              //       hintText: 'Enter Car Description',
-              //       border: InputBorder.none,
-              //       contentPadding: EdgeInsets.all(15),
-              //     ),
-              //   ),
-              // ),
-              DropDown.buildDropdownContainer(
-                context,
-                "Select Vehicle Type",
-                ["Petrol", "Electric", "Diesel"],
-                selectedVehicleType,
-                    (String? newValue) {
-                  setState(() {
-                    selectedVehicleType = newValue;
-                  });
-                },
-              ),
-              const SizedBox(
                 height: 20,
+              ),
+          DropDown.buildDropdownContainer(
+            context,
+            "Select Vehicle Type",
+            ["Petrol", "Electric", "Diesel"],
+            selectedVehicleType,
+                (String? newValue) {
+              setState(() {
+                selectedVehicleType = newValue;
+                vehicleTypecontroller.text = newValue ?? "";
+              });
+            },
+          ),
+              const SizedBox(
+                height: 30,
               ),
               Container(
                 height: 50,
@@ -269,7 +247,30 @@ class RentPageState extends State<RentPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
+              ),
+              Container(
+                height: 50,
+                width: 339,
+                margin: const EdgeInsets.only(bottom: 15),
+                decoration: BoxDecoration(
+                  color: GlobalColors.boxColor,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [CustomBoxShadow()],
+                ),
+                child: Center(
+                  child: TextField(
+                    controller: amountcontroller,
+                    decoration: InputDecoration(
+                      hintText: 'Enter Car Charges per day',
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(15),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -300,6 +301,7 @@ class RentPageState extends State<RentPage> {
                   ),
                 ],
               ),
+
             ],
           ),
         ),
