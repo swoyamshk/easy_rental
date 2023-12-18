@@ -1,17 +1,15 @@
+import 'package:easy_rental_nepal/modules/car_tiles.dart';
+import 'package:easy_rental_nepal/modules/book_history_tile.dart';
 import 'package:flutter/material.dart';
+
+import '../global/globalColors.dart';
+import '../global/globalShadow.dart';
 
 class BookingHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 45, right: 0),
-        child: Column(
-children: [
-  Text("Booking History")
-],
-        ),
-      ),
+    return Scaffold(
+      body: BookHistoryTiles(context),
     );
   }
 }

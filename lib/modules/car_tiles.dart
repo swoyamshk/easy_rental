@@ -80,8 +80,8 @@ Widget carTileItem(BuildContext context,
                 height: 110,
                 width: 180,
                 child: FittedBox(
-                  child: Image.file(File(imageUrl)),
-                  fit: BoxFit.fill,
+                  child:
+                  Image.file(File(imageUrl)),                  // fit: BoxFit.fill,
                 ),
               ),
               const SizedBox(
@@ -140,7 +140,7 @@ Widget carTileItem(BuildContext context,
                         carFeatureItem("Air Conditioning"),
                         carFeatureItem("Meet and PickUp"),
                         const SizedBox(height: 10,),
-                        Text("Rs:$amount /per hour",style: TextStyle(
+                        Text("Rs:$amount /per day",style: TextStyle(
                             fontSize: 16),)
 
                       ],

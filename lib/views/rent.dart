@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 
 import '../components/dialogBox.dart';
 import '../global/globalColors.dart';
@@ -35,6 +36,11 @@ class RentPageState extends State<RentPage> {
       pickedFile = result.files.first;
     });
   }
+
+  String _formatDate(DateTime date) {
+    final dateFormat = DateFormat('dd MMM', 'en_US');
+    return dateFormat.format(date);
+  }
   Future<void> saveDetails({
     required String model,
     required String seatings,
@@ -49,6 +55,8 @@ class RentPageState extends State<RentPage> {
       FirebaseFirestore.instance.collection('rent-details');
       User? user = FirebaseAuth.instance.currentUser;
 
+      String formattedDate = _formatDate(DateTime.now());
+
       await vehiclesCollection.add({
         'model': model,
         'seatings': seatings,
@@ -57,6 +65,7 @@ class RentPageState extends State<RentPage> {
         'status': 'available',
         'vehicleType': vehicleType,
         'amount': amount,
+        'date': formattedDate,
         'location': location != null
             ? GeoPoint(location.latitude, location.longitude)
             : null,
@@ -83,13 +92,13 @@ class RentPageState extends State<RentPage> {
 
 
         await saveDetails(
-          model: model,
-          seatings: seatings,
-          imgPath: imgPath,
-          location: selectedLocation,
-          vehicleType: vehicletype,
-          amount: amount,
-          status: 'available'
+            model: model,
+            seatings: seatings,
+            imgPath: imgPath,
+            location: selectedLocation,
+            vehicleType: vehicletype,
+            amount: amount,
+            status: 'available'
         );
 
 
@@ -194,18 +203,18 @@ class RentPageState extends State<RentPage> {
               const SizedBox(
                 height: 20,
               ),
-          DropDown.buildDropdownContainer(
-            context,
-            "Select Vehicle Type",
-            ["Petrol", "Electric", "Diesel"],
-            selectedVehicleType,
-                (String? newValue) {
-              setState(() {
-                selectedVehicleType = newValue;
-                vehicleTypecontroller.text = newValue ?? "";
-              });
-            },
-          ),
+              DropDown.buildDropdownContainer(
+                context,
+                "Select Vehicle Type",
+                ["Petrol", "Electric", "Diesel"],
+                selectedVehicleType,
+                    (String? newValue) {
+                  setState(() {
+                    selectedVehicleType = newValue;
+                    vehicleTypecontroller.text = newValue ?? "";
+                  });
+                },
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -309,4 +318,3 @@ class RentPageState extends State<RentPage> {
     );
   }
 }
-

@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 class RouteGen {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case '/':
+      case '/emailSignup':
         return MaterialPageRoute(builder: (_) => emailSignup());
       case '/login':
         return MaterialPageRoute(builder: (_) => Login());

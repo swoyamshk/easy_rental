@@ -42,6 +42,6 @@ class HistoryState extends State<History> {
                 ],
               ),
             ),
-            body: TabBarView(children: [BookingHistory(), RentHistory()])));
+            body: TabBarView(children: [RentHistory(), BookingHistory() ])));
   }
 }

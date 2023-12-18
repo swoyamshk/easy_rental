@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../global/globalColors.dart';
+import '../global/globalShadow.dart';
+import '../modules/rent_history_tile.dart';
+
 class RentHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 45, right: 0),
-        child: Column(
-          children: [
-            Text("Rent history")
-          ],
-        ),
-      ),
+    return Scaffold(
+      body: RentHistoryTiles(context),
     );
   }
 }

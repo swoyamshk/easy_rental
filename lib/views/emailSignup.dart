@@ -6,7 +6,7 @@ import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
 import '../services/auth_services.dart';
 
-class emailSignup extends StatefulWidget {
+class  emailSignup extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return emailSignupstate();

@@ -49,6 +49,8 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
         'status': 'booked',
         'bookerId': bookerId,
         'total_amount': totalAmount.toStringAsFixed(2),
+        'totalDays': totalDays,
+        'rentPeriod': _formatDate(selectedStartDate!) + ' - ' + _formatDate(selectedEndDate!)
       });
 
       Navigator.push(
