@@ -3,7 +3,6 @@ import 'package:easy_rental_nepal/views/success.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'dart:io';
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
 import '../modules/car_feature.dart';
@@ -107,7 +106,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                           height: 110,
                           width: 180,
                           child: FittedBox(
-                            child: Image.file(File(imageUrl)),
+                            child: Image.network(imageUrl),
                             fit: BoxFit.fill,
                           ),
                         ),

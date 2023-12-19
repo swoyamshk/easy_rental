@@ -3,10 +3,12 @@ import 'package:easy_rental_nepal/components/dropDown.dart';
 import 'package:easy_rental_nepal/global/globalShadow.dart';
 import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
+import 'dart:io';
 
 import '../components/dialogBox.dart';
 import '../global/globalColors.dart';
@@ -28,6 +30,10 @@ class RentPageState extends State<RentPage> {
   TextEditingController vehicleTypecontroller= TextEditingController();
   TextEditingController amountcontroller = TextEditingController();
 
+  String _formatDate(DateTime date) {
+    final dateFormat = DateFormat('dd MMM', 'en_US');
+    return dateFormat.format(date);
+  }
   Future selectFile() async {
     final result = await FilePicker.platform.pickFiles();
     if (result == null) return;
@@ -37,10 +43,71 @@ class RentPageState extends State<RentPage> {
     });
   }
 
-  String _formatDate(DateTime date) {
-    final dateFormat = DateFormat('dd MMM', 'en_US');
-    return dateFormat.format(date);
+
+  Future<void> uploadFile() async {
+    if (pickedFile == null) {
+      print("No file picked");
+      return;
+    }
+
+    try {
+      // Show loading indicator
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 10),
+                Text("Saving data..."),
+              ],
+            ),
+          );
+        },
+      );
+
+      String imgPath = pickedFile!.path!;
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+
+      Reference storageReference =
+      FirebaseStorage.instance.ref().child('images/$fileName');
+
+      await storageReference.putFile(File(imgPath));
+      String fileUrl = await storageReference.getDownloadURL();
+
+      // Save the file URL along with other details
+      final model = modelcontroller.text;
+      final seatings = seatingscontroller.text;
+      final vehicletype = vehicleTypecontroller.text;
+      final amount = amountcontroller.text;
+
+      await saveDetails(
+        model: model,
+        seatings: seatings,
+        imgPath: fileUrl,
+        location: selectedLocation,
+        vehicleType: vehicletype,
+        amount: amount,
+        status: 'available',
+      );
+
+      print("Details and image URL saved successfully");
+
+      // Dismiss loading indicator
+      Navigator.pop(context);
+
+      Dialogbox.confirmDialogueBox(context, "Your Car has been rented");
+    } catch (error) {
+      print('Error uploading file or saving details: $error');
+      // Dismiss loading indicator on error
+      Navigator.pop(context);
+    }
   }
+
+
   Future<void> saveDetails({
     required String model,
     required String seatings,
@@ -73,40 +140,6 @@ class RentPageState extends State<RentPage> {
       print('Data added to Firestore successfully');
     } catch (error) {
       print('Error adding data to Firestore: $error');
-    }
-  }
-  Future<void> uploadAndSave() async {
-    if (pickedFile == null) {
-      print("No file picked");
-      return;
-    }
-    try {
-      String imgPath = pickedFile!.path!;
-
-      if (imgPath.isNotEmpty) {
-        final model = modelcontroller.text;
-        final seatings = seatingscontroller.text;
-        final vehicletype = vehicleTypecontroller.text;
-        final amount = amountcontroller.text;
-
-
-
-        await saveDetails(
-            model: model,
-            seatings: seatings,
-            imgPath: imgPath,
-            location: selectedLocation,
-            vehicleType: vehicletype,
-            amount: amount,
-            status: 'available'
-        );
-
-
-        print("Details and image path saved successfully");
-        Dialogbox.confirmDialogueBox(context, "Your Car has been rented");
-      }
-    } catch (error) {
-      print('Error uploading file or saving details: $error');
     }
   }
 
@@ -286,7 +319,7 @@ class RentPageState extends State<RentPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      uploadAndSave();
+                      uploadFile();
                     },
                     child: Container(
                       height: 45,

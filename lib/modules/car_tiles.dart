@@ -1,4 +1,3 @@
-import 'dart:io';
 
 
 import 'package:flutter/material.dart';
@@ -41,13 +40,13 @@ Widget carTiles(BuildContext context) {
   );
 }
 
-Widget carTileItem(BuildContext context,
-    QueryDocumentSnapshot<Object?> carData) {
+Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData) {
   String imageUrl = carData.get('img');
   String carmodel = carData.get('model');
   String seatings = carData.get('seatings');
   String vehicletype = carData.get('vehicleType');
   String amount = carData.get('amount');
+
   return GestureDetector(
     onTap: () {
       // Navigate to car details page and pass car details
@@ -80,8 +79,8 @@ Widget carTileItem(BuildContext context,
                 height: 110,
                 width: 180,
                 child: FittedBox(
-                  child:
-                  Image.file(File(imageUrl)),                  // fit: BoxFit.fill,
+                  child: Image.network(imageUrl),
+                  fit: BoxFit.fill,
                 ),
               ),
               const SizedBox(
@@ -134,7 +133,6 @@ Widget carTileItem(BuildContext context,
                                 ],
                               ),
                             ),
-
                           ],
                         ),
                         carFeatureItem("Air Conditioning"),
@@ -142,21 +140,19 @@ Widget carTileItem(BuildContext context,
                         const SizedBox(height: 10,),
                         Text("Rs:$amount /per day",style: TextStyle(
                             fontSize: 16),)
-
                       ],
-
                     ),
                   ],
                 ),
               ),
             ],
-
           ),
         ),
       ),
     ),
   );
 }
+
 
 
 class CarTilesState extends State<CarTiles> {
