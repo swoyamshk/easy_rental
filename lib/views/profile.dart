@@ -76,7 +76,7 @@ class ProfileState extends State<Profile> {
                       Icon(Icons.person, size: 30, color: Colors.red), // Set the icon color to red
                       SizedBox(width: 10),
                       Text(
-                        'Edit Profile ',
+                        'Complete Your Profile ',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
