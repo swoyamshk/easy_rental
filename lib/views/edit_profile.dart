@@ -8,6 +8,10 @@ import '../global/globalColors.dart';
   Future<void> saveProfile({
     required BuildContext context,
     required String name,
+    required String dob,
+    required String country,
+    required String gender,
+    required String contact,
 
 
   }) async {
@@ -17,9 +21,13 @@ import '../global/globalColors.dart';
 
       await vehiclesCollection.add({
         'name': name,
+        'dob': dob,
+        'country': country,
+        'gender': gender,
+        'contact': contact,
 
       });
-      Dialogbox.okDialogueBox(context, "Your profile has been ");
+      Dialogbox.okDialogueBox(context, "Your profile has been updated ");
       print('Data added to Firestore successfully');
     } catch (error) {
       print('Error adding data to Firestore: $error');
@@ -37,7 +45,11 @@ import '../global/globalColors.dart';
 
   class EditProfileState extends State<EditProfile> {
     DateTime selectedDate = DateTime.now();
-    TextEditingController _dateController = TextEditingController();
+    TextEditingController datecontroller = TextEditingController();
+    final TextEditingController namecontroller = TextEditingController();
+    final TextEditingController countrycontroller = TextEditingController();
+    final TextEditingController gendercontroller = TextEditingController();
+
     late String selectedCountry;
     List<String> countries = [
       'Country 1',
@@ -56,7 +68,7 @@ import '../global/globalColors.dart';
 
       if (picked != null && picked != DateTime.now()) {
         setState(() {
-          _dateController.text =
+          datecontroller.text =
           "${picked.toLocal().day}-${picked.toLocal().month}-${picked.toLocal().year}";
         });
       }
@@ -66,8 +78,11 @@ import '../global/globalColors.dart';
 
     @override
     Widget build(BuildContext context) {
-      final TextEditingController namecontroller = TextEditingController();
-      String? selectedVehicleType;
+
+      final TextEditingController contactcontroller = TextEditingController();
+
+      String? selectedCountry;
+      String? selectedgender;
       return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
@@ -154,7 +169,7 @@ import '../global/globalColors.dart';
                         Expanded(
                           child: TextField(
 
-                            controller: _dateController,
+                            controller: datecontroller,
                             decoration: const InputDecoration(
                               hintText: 'Date of Birth',
                               border: InputBorder.none,
@@ -181,27 +196,27 @@ import '../global/globalColors.dart';
                   child: ProfileDropDown.buildDropdownContainer(
                     context,
                     "Country",
-                    ["Nepal", "India", ""],
-                    selectedVehicleType,
+                    ["1", "2", "3","4", "5+"],
+                    selectedCountry,
                         (String? newValue) {
                       setState(() {
-                        selectedVehicleType = newValue;
-                        // vehicleTypecontroller.text = newValue ?? "";
+                        selectedCountry = newValue;
+                        countrycontroller.text = newValue ?? "";
                       });
                     },
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 32, top: 25, bottom: 10),
+                  padding: const EdgeInsets.only(left: 32, top: 15),
                   child: ProfileDropDown.buildDropdownContainer(
                     context,
-                    "Gender",
-                    ["Male", "Female", "Others"],
-                    selectedVehicleType,
+                    "Your Gender",
+                    ['Male','Female','Other'],
+                    selectedgender,
                         (String? newValue) {
                       setState(() {
-                        selectedVehicleType = newValue;
-                        // vehicleTypecontroller.text = newValue ?? "";
+                        selectedgender = newValue;
+                        gendercontroller.text = newValue ?? "";
                       });
                     },
                   ),
@@ -219,6 +234,7 @@ import '../global/globalColors.dart';
                     ),
                     child: Center(
                       child: TextField(
+                        controller: contactcontroller,
                         decoration: const InputDecoration(
                           hintText: 'Contact',
                           border: InputBorder.none,
@@ -232,7 +248,7 @@ import '../global/globalColors.dart';
                   padding: const EdgeInsets.only(left: 32, top: 15),
                   child: GestureDetector(
                     onTap: (){
-                      saveProfile(context:context,name: namecontroller.text, );
+                      saveProfile(context:context,name: namecontroller.text, dob: datecontroller.text, country: countrycontroller.text, gender: gendercontroller.text, contact: contactcontroller.text, );
 
                     },
                     child: Container(
