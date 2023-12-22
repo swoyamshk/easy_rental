@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
-import '../views/car_details.dart';
+import '../views/confirm_booking.dart';
 
 class BookTiles extends StatefulWidget {
   const BookTiles({Key? key}) : super(key: key);
@@ -103,21 +102,21 @@ Widget bookTileItem(BuildContext context,
                           const SizedBox(height: 13,),
                           Text(
                             carmodel,
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
-                      const SizedBox(width: 80),
+                      const SizedBox(width: 40),
                       Column(
                         children: [
                           Text(
                             "Rs.$totalAmount",
                             style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                           ),
-                          const SizedBox(height: 13,),
+                          const SizedBox(height: 11,),
                           Text(
                             rentPeriod,
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
@@ -131,7 +130,6 @@ Widget bookTileItem(BuildContext context,
     ),
   );
 }
-
 
 class HistoryTilesState extends State<BookTiles> {
   @override

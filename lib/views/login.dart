@@ -50,7 +50,7 @@ class loginState extends State<Login> {
     }
      catch (e) {
       print('Generic Exception: $e');
-      Dialogbox.warningDialogueBox(context, "Your Email and Password do not match");
+      Dialogbox.warningDialogueBox(context,"Login Failed","Your Email and Password do not match");
     }
   }
 
@@ -60,6 +60,7 @@ class loginState extends State<Login> {
     var size = MediaQuery.of(context).size;
     readfromstorage();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SingleChildScrollView(
           padding: EdgeInsets.only(top: 70),

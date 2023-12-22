@@ -1,4 +1,4 @@
-import 'package:easy_rental_nepal/views/edit_profile.dart';
+import 'package:easy_rental_nepal/views/complete_profile.dart';
 import 'package:easy_rental_nepal/views/helpcenter.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../components/dialogBox.dart';
 import '../global/globalColors.dart';
+import '../global/globalShadow.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Padding(
@@ -37,23 +39,22 @@ class ProfileState extends State<Profile> {
             mainAxisAlignment: MainAxisAlignment.start,
 
             children: [
-              Align(
-                alignment: Alignment.topCenter,
+              Padding(
+                padding: const EdgeInsets.only(right: 30, top: 25),
                 child: Container(
-                  margin: EdgeInsets.only(top: 25), // Move the blue container down by 15
-                  width: 100,
                   height: 100,
+                  width: 100, // Adjust the width to make it a perfect circle
+                  margin: const EdgeInsets.only(bottom: 15),
                   decoration: BoxDecoration(
+                    color: GlobalColors.boxColor,
                     shape: BoxShape.circle,
-                    color: Colors.blue, // You can change the color as per your requirement
+                    boxShadow: [CustomBoxShadow()],
                   ),
                   child: Center(
-                    child: Text(
-                      'Your Profile',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                    child: Icon(
+                      Icons.person, // Replace with the desired icon
+                      size: 60, // Adjust the size of the icon
+                      color: Colors.black, // Adjust the color of the icon
                     ),
                   ),
                 ),
@@ -199,7 +200,6 @@ class ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              // Additional Containers with red icons and black text
             ],
           ),
         ),

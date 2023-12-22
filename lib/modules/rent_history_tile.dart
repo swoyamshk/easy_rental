@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
-import '../views/car_details.dart';
+import '../views/confirm_booking.dart';
 
 class RentTiles extends StatefulWidget {
   const RentTiles({Key? key}) : super(key: key);
@@ -106,19 +104,22 @@ Widget rentTileItem(
                           ),
                         ],
                       ),
-                      const SizedBox(width: 80),
-                      Column(
-                        children: [
-                          Text(
-                            "Rs.$amount",
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(height: 13,),
-                          Text(
-                            date,
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
-                          ),
-                        ],
+                      const SizedBox(width: 120),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Column(
+                          children: [
+                            Text(
+                              "Rs.$amount",
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(height: 13,),
+                            Text(
+                              date,
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                            ),
+                          ],
+                        ),
                       ),
 
                     ],

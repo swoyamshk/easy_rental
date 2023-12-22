@@ -24,6 +24,7 @@ class HistoryState extends State<History> {
                 child: Text(
                   "History",
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: 26,
                     fontWeight: FontWeight.normal,
                   ),
@@ -33,12 +34,13 @@ class HistoryState extends State<History> {
               bottom: TabBar(
                 indicatorColor: Colors.white,
                 labelColor: Colors.white,
+                unselectedLabelColor: Colors.white60,
                 labelStyle: TextStyle(fontSize: 18),
                 tabs: [
                   Tab(
                     text: 'Rent History',
                   ),
-                  Tab(text: 'Booking History'),
+                  Tab(text: 'Booking History' ),
                 ],
               ),
             ),

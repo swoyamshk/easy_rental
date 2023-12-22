@@ -29,6 +29,7 @@ class emailSignupstate extends State<emailSignup> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SingleChildScrollView(
           child: Column(

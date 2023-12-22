@@ -16,13 +16,14 @@ class BookTilesState extends State<BookTiles> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/home');
             },
-            icon: Icon(Icons.arrow_back, size: 30.0),
+            icon: Icon(Icons.arrow_back, size: 30.0, color: Colors.white,),
           ),
           backgroundColor: GlobalColors.fontColor,
           title: Row(
@@ -34,6 +35,7 @@ class BookTilesState extends State<BookTiles> {
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.normal,
+                      color: Colors.white
                   ),
                 ),
               ),

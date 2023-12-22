@@ -46,10 +46,9 @@ class RentPageState extends State<RentPage> {
 
   Future<void> uploadFile() async {
     if (pickedFile == null) {
-      print("No file picked");
+      Dialogbox.warningDialogueBox(context, "Error", "Please select an image.");
       return;
     }
-
     try {
       // Show loading indicator
       showDialog(
@@ -154,7 +153,7 @@ class RentPageState extends State<RentPage> {
             onPressed: () {
               Navigator.of(context).pushNamed('/home');
             },
-            icon: Icon(Icons.arrow_back, size: 30.0),
+            icon: Icon(Icons.arrow_back, size: 30.0, color: Colors.white,),
           ),
           backgroundColor: GlobalColors.fontColor,
           title: Text(
@@ -162,6 +161,7 @@ class RentPageState extends State<RentPage> {
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.normal,
+              color: Colors.white
             ),
           ),
         ),
@@ -303,6 +303,7 @@ class RentPageState extends State<RentPage> {
                 child: Center(
                   child: TextField(
                     controller: amountcontroller,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: 'Enter Car Charges per day',
                       border: InputBorder.none,

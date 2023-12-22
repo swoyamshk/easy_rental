@@ -1,6 +1,6 @@
 import 'package:easy_rental_nepal/route.dart';
 import 'package:easy_rental_nepal/views/emailSignup.dart';
-import 'package:easy_rental_nepal/views/home.dart';
+import 'package:easy_rental_nepal/views/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: initialUser != null ? Home() : emailSignup(),
+      home: initialUser != null ? SplashScreen() : emailSignup(),
       onGenerateRoute: RouteGen.generateRoute,
     );
   }

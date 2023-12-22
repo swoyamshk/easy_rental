@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../services/auth_services.dart';
 
 class Dialogbox {
-  static warningDialogueBox(context, String message) {
+  static warningDialogueBox(context, String heading, String message) {
     return showDialog(
         context: context,
         builder: (BuildContext context)
         {
           return AlertDialog(
 
-            title: const Text("Login Failed"),
+            title: Text(heading),
             content: Text(message),
             actions: [
               TextButton(child: const Text("Ok"),

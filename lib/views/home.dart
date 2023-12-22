@@ -20,17 +20,18 @@ class homeState extends State<Home> {
   final PageController _pageController = PageController();
 
   homewidget() {
+    double size= MediaQuery.of(context).size.width;
     return Center(
         child: Column(
       children: [
         const SizedBox(height: 60),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.only(left: 25, bottom: size * 0.02),
           child: Row(
             children: [
               Container(
                 height: 45,
-                width: 180,
+                width: size * 0.44,
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(176, 0, 0, 0),
                   borderRadius: BorderRadius.circular(30),
@@ -57,7 +58,7 @@ class homeState extends State<Home> {
               ),
               Container(
                 height: 45,
-                width: 180,
+                width: size * 0.4,
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(176, 0, 0, 0),
                   borderRadius: BorderRadius.circular(30),
@@ -85,7 +86,7 @@ class homeState extends State<Home> {
         const SizedBox(height: 8),
         Container(
           height: 45,
-          width: 360,
+          width: size * 0.9,
           decoration: BoxDecoration(
             color: const Color.fromARGB(176, 0, 0, 0),
             borderRadius: BorderRadius.circular(30),
@@ -118,7 +119,7 @@ class homeState extends State<Home> {
           child: ListView(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
-            children: const [
+            children: [
               Column(
                 children: [
                   Row(
@@ -126,7 +127,7 @@ class homeState extends State<Home> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 40),
+                          padding: EdgeInsets.only(left: size * 0.1),
                           child: Text(
                             "Recommended",
                             style: TextStyle(

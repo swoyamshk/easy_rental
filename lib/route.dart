@@ -9,12 +9,15 @@ import 'package:easy_rental_nepal/views/history.dart';
 import 'package:easy_rental_nepal/views/login.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:easy_rental_nepal/views/rent.dart';
+import 'package:easy_rental_nepal/views/splash_screen.dart';
 
 import 'package:flutter/material.dart';
 
 class RouteGen {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(builder: (_) => SplashScreen());
       case '/emailSignup':
         return MaterialPageRoute(builder: (_) => emailSignup());
       case '/login':

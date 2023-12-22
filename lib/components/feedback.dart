@@ -47,10 +47,15 @@ class FeedbackForm extends StatelessWidget {
               child: Center(
                 child: TextField(
                   controller: titlecontroller ,
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                  ),
                   decoration: const InputDecoration(
+
                     hintText: 'Enter Feedback Title',
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.all(15),
+
                   ),
                 ),
               ),
@@ -71,6 +76,9 @@ class FeedbackForm extends StatelessWidget {
                 controller: descriptioncontroller ,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                ),
                 decoration: InputDecoration(
                   hintText: 'Enter Feedbacks here',
                   border: InputBorder.none,

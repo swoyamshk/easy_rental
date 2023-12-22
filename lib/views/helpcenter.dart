@@ -29,6 +29,7 @@ class HelpCenterState extends State<HelpCenter> {
           backgroundColor: GlobalColors.fontColor,
           bottom: TabBar(
             indicatorColor: Colors.white,
+            unselectedLabelColor: Colors.white60,
             labelColor: Colors.white,
             labelStyle: TextStyle(fontSize: 18),
             tabs: [
@@ -39,6 +40,7 @@ class HelpCenterState extends State<HelpCenter> {
 
         ),
         body: TabBarView(
+
           children: [
             FeedbackForm(),
             ContactUs()

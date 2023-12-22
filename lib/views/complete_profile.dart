@@ -84,10 +84,11 @@ import '../global/globalColors.dart';
       String? selectedCountry;
       String? selectedgender;
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
             title: Text(
-              "Edit Profile",
+              "Complete Profile",
               style: TextStyle(color: Colors.black, fontSize: 28),
             ),
             leading: GestureDetector(

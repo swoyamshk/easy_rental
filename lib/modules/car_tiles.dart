@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
-import '../views/car_details.dart';
+import '../views/confirm_booking.dart';
 import 'car_feature.dart';
 
 class CarTiles extends StatefulWidget {
