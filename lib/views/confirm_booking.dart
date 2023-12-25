@@ -78,7 +78,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
     String amount = widget.carData.get('amount');
     return Scaffold(
         appBar: AppBar(
-          title: Text("Confirm Booking", style: TextStyle(color: Colors.white),),
+          title: Text("Confirm Booking", style: TextStyle(fontFamily: 'Montserrat',color: Colors.white),),
           backgroundColor: GlobalColors.fontColor,
           iconTheme: IconThemeData(color: Colors.white),
         ),
@@ -125,7 +125,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                             ),
                             Text(
                               carmodel,
-                              style: TextStyle(fontSize: 22),
+                              style: TextStyle(fontFamily: 'Montserrat',fontSize: 22),
                             ),
                             SizedBox(
                               height: 2,

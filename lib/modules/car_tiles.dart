@@ -97,7 +97,7 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                     ),
                     Text(
                       carmodel,
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontFamily: 'Montserrat',fontSize: 22),
                     ),
                     SizedBox(
                       height: 2,
@@ -110,7 +110,7 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                             Text(
                               "Seatings: $seatings",
                               style: TextStyle(
-                                  fontSize: 14, color: GlobalColors.fontColor),
+                                  fontSize: 14, fontFamily: 'Montserrat',color: GlobalColors.fontColor),
                             ),
                             Icon(Icons.person, size: 18,),
                           ],
@@ -128,7 +128,7 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                                 children: [
                                   Text(
                                     vehicletype,
-                                    style: TextStyle(fontSize: 12),
+                                    style: TextStyle(fontFamily: 'Montserrat',fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -138,7 +138,7 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                         carFeatureItem("Air Conditioning"),
                         carFeatureItem("Meet and PickUp"),
                         const SizedBox(height: 10,),
-                        Text("Rs:$amount /per day",style: TextStyle(
+                        Text("Rs:$amount /per day",style: TextStyle(fontFamily: 'Montserrat',
                             fontSize: 16),)
                       ],
                     ),

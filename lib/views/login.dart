@@ -72,7 +72,7 @@ class loginState extends State<Login> {
                   padding: const EdgeInsets.only(right: 320),
                   child: IconButton(
                     onPressed: (){
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushNamed(context, '/emailSignup');
                     },
                     icon: new Icon(Icons.arrow_back, size: 30.0),
                   ),

@@ -64,6 +64,7 @@ class Dialogbox {
         }
     );
   }
+
   static okDialogueBox(context, String message) {
     return showDialog(
         context: context,
@@ -83,5 +84,7 @@ class Dialogbox {
         }
     );
   }
+
+
 
 }

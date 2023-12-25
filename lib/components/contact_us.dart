@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'container_shadow.dart';
+
 class ContactUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,13 +19,15 @@ class ContactUs extends StatelessWidget {
                   height: 60,
                   width: 300,
                   color: Colors.white,
+                  url: "https://www.gmail.com/",
                   child: const Row(
                     children: [
                       Icon(Icons.mail, size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Email Us',
-                        style: TextStyle(fontSize: 18),
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
                       ),
                     ],
                   ),
@@ -33,14 +37,16 @@ class ContactUs extends StatelessWidget {
                   height: 60,
                   width: 300,
                   color: Colors.white,
+                  url: 'https://www.whatsapp.com/',
                   child: const Row(
                     children: [
                       Icon(Icons.cleaning_services,
-                          size:  25, color: Colors.black),
+                          size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Whatsapp',
-                        style: TextStyle(fontSize: 18),
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
                       ),
                     ],
                   ),
@@ -50,13 +56,16 @@ class ContactUs extends StatelessWidget {
                   height: 60,
                   width: 300,
                   color: Colors.white,
+                  url: 'https://www.instagram.com/',
                   child: const Row(
                     children: [
-                      Icon(Icons.whatshot, size: 25, color: Colors.black),
+                      Icon(Icons.camera_alt_rounded,
+                          size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
-                        'Contact us',
-                        style: TextStyle(fontSize: 18),
+                        'Instagram',
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
                       ),
                     ],
                   ),
@@ -66,13 +75,15 @@ class ContactUs extends StatelessWidget {
                   height: 60,
                   width: 300,
                   color: Colors.white,
+                  url: 'https://www.facebook.com/',
                   child: const Row(
                     children: [
-                      Icon(Icons.facebook, size:  25, color: Colors.black),
+                      Icon(Icons.facebook, size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Facebook',
-                        style: TextStyle(fontSize: 18),
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
                       ),
                     ],
                   ),
@@ -85,11 +96,12 @@ class ContactUs extends StatelessWidget {
                   child: const Row(
                     children: [
                       Icon(Icons.earbuds_battery,
-                          size:  25, color: Colors.black),
+                          size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Support',
-                        style: TextStyle(fontSize: 18),
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
                       ),
                     ],
                   ),
@@ -99,13 +111,15 @@ class ContactUs extends StatelessWidget {
                   height: 60,
                   width: 300,
                   color: Colors.white,
+                  url: 'tiktok.com',
                   child: const Row(
                     children: [
-                      Icon(Icons.tiktok, size:  25, color: Colors.black),
+                      Icon(Icons.tiktok, size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
                         'Tiktok',
-                        style: TextStyle(fontSize: 18),
+                        style:
+                            TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
                       ),
                     ],
                   ),
@@ -115,38 +129,6 @@ class ContactUs extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ContainerWithShadow extends StatelessWidget {
-  final Widget child;
-  final double? height;
-  final double? width;
-  final Color? color;
-
-  ContainerWithShadow(
-      {required this.child, this.height, this.width, this.color});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      padding: const EdgeInsets.all(16.0),
-      margin: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: color ?? Colors.white,
-        borderRadius: BorderRadius.circular(45.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 3,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: child,
     );
   }
 }

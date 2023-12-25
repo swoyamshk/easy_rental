@@ -48,7 +48,7 @@ class FeedbackForm extends StatelessWidget {
                 child: TextField(
                   controller: titlecontroller ,
                   style: TextStyle(
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.normal,fontFamily: 'Montserrat'
                   ),
                   decoration: const InputDecoration(
 
@@ -77,7 +77,7 @@ class FeedbackForm extends StatelessWidget {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 style: TextStyle(
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.normal,fontFamily: 'Montserrat'
                 ),
                 decoration: InputDecoration(
                   hintText: 'Enter Feedbacks here',
@@ -107,6 +107,7 @@ class FeedbackForm extends StatelessWidget {
                     "Submit",
                     style: TextStyle(
                       color: Colors.white,
+                      fontFamily: 'Montserrat',
                       fontSize: 20,
                       fontWeight: FontWeight.normal,
                     ),

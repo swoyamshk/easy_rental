@@ -15,17 +15,17 @@ class OrderSuccessScreen extends StatelessWidget{
           Column(
             children: [
               Image.asset("assets/success.png", height: 200,),
-              Text("Success!", style: TextStyle(
+              Text("Success!", style: TextStyle(fontFamily: 'Montserrat',
                 fontSize: 40,
                 fontWeight: FontWeight.w600,
               ),),
               const SizedBox(height: 20,),
-              Text("The Car will be on the way.",style: TextStyle(
+              Text("The Car will be on the way.",style: TextStyle(fontFamily: 'Montserrat',
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               )),
               const SizedBox(height: 10,),
-              Text("Thank you for choosing our app.",style: TextStyle(
+              Text("Thank you for choosing our app.",style: TextStyle(fontFamily: 'Montserrat',
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               )),

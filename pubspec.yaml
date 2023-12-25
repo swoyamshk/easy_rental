@@ -42,12 +42,14 @@ dependencies:
   google_maps_flutter_web:
   salomon_bottom_bar: ^3.3.2
   flutter_inset_box_shadow: ^1.0.8
+  font_awesome_flutter: ^10.6.0
   file_picker: 5.2.1
   firebase_storage: ^11.2.1
   firebase_messaging: ^14.7.6
   geocoding: ^2.0.2
-  url_launcher: ^6.0.0
+  url_launcher: ^6.2.2
   cached_network_image:
+  fluttertoast: ^8.2.4
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -73,7 +75,12 @@ flutter:
   assets:
     - assets/
     - assets/raw/maptheme.json
-
+  fonts:
+      - family: Montserrat
+        fonts:
+          - asset: fonts/static/Montserrat-Regular.ttf
+          - asset: fonts/static/Montserrat-Bold.ttf
+          # Add other weights and styles as needed
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

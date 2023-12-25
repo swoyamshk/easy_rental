@@ -95,28 +95,28 @@ Widget rentTileItem(
                         children: [
                           Text(
                             carmodel,
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                            style: TextStyle(fontSize: 22,fontFamily: 'Montserrat', fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 13,),
                           Text(
-                            carmodel,
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                            "Rent Date: ",
+                            style: TextStyle(fontSize: 17,fontFamily: 'Montserrat', fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
-                      const SizedBox(width: 120),
+                      const SizedBox(width: 110),
                       Align(
                         alignment: Alignment.topRight,
                         child: Column(
                           children: [
                             Text(
                               "Rs.$amount",
-                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                              style: TextStyle(fontSize: 22,fontFamily: 'Montserrat', fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(height: 13,),
                             Text(
                               date,
-                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                              style: TextStyle(fontSize: 17,fontFamily: 'Montserrat', fontWeight: FontWeight.w300),
                             ),
                           ],
                         ),

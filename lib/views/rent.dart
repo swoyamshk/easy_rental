@@ -159,6 +159,7 @@ class RentPageState extends State<RentPage> {
           title: Text(
             "Rent a Car",
             style: TextStyle(
+                fontFamily: 'Montserrat',
               fontSize: 26,
               fontWeight: FontWeight.normal,
               color: Colors.white
@@ -183,6 +184,9 @@ class RentPageState extends State<RentPage> {
                     controller: modelcontroller,
                     decoration: InputDecoration(
                       hintText: 'Enter Car Model',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Montserrat', // You can apply other styles as needed
+                      ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.all(15),
                     ),
@@ -205,7 +209,7 @@ class RentPageState extends State<RentPage> {
                 },
               ),
               const SizedBox(
-                height: 20,
+                height: 26,
               ),
               Container(
                 height: 50,
@@ -222,7 +226,7 @@ class RentPageState extends State<RentPage> {
                     Expanded(
                       child: Text(pickedFile != null
                           ? 'File Selected: ${pickedFile!.name}'
-                          : 'Upload Images'),
+                          : 'Upload Images', style: TextStyle(fontFamily: 'Montserrat', fontSize: 17, color: Colors.black45),),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -234,7 +238,7 @@ class RentPageState extends State<RentPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               DropDown.buildDropdownContainer(
                 context,
@@ -267,7 +271,7 @@ class RentPageState extends State<RentPage> {
                       child: Text(
                         selectedLocation != null
                             ? 'Selected Location: $selectedLocation'
-                            : 'Select Location',
+                            : 'Select Location', style: TextStyle(fontFamily: 'Montserrat', fontSize: 17, color: Colors.black45)
                       ),
                     ),
                     GestureDetector(
@@ -306,6 +310,9 @@ class RentPageState extends State<RentPage> {
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: 'Enter Car Charges per day',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Montserrat',
+                      ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.all(15),
                     ),
@@ -335,6 +342,7 @@ class RentPageState extends State<RentPage> {
                           "Submit",
                           style: TextStyle(
                             color: Colors.white,
+                            fontFamily: 'Montserrat',
                             fontSize: 20,
                             fontWeight: FontWeight.normal,
                           ),

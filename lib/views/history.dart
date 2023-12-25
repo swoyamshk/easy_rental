@@ -12,6 +12,7 @@ class History extends StatefulWidget {
 }
 
 class HistoryState extends State<History> {
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -46,4 +47,9 @@ class HistoryState extends State<History> {
             ),
             body: TabBarView(children: [RentHistory(), BookingHistory() ])));
   }
+
+  void onTabTapped(int i) {
+    _pageController.jumpToPage(i);
+  }
+
 }

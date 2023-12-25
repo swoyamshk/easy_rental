@@ -33,6 +33,7 @@ class BookTilesState extends State<BookTiles> {
                 child: Text(
                   "Available vehicles",
                   style: TextStyle(
+                      fontFamily: 'Montserrat',
                     fontSize: 26,
                     fontWeight: FontWeight.normal,
                       color: Colors.white

@@ -12,7 +12,7 @@ Widget carFeatureItem(String feature) {
           children: [
             Text(
               feature,
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(fontFamily: 'Montserrat',fontSize: 12),
             ),
           ],
         ),

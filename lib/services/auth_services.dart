@@ -42,7 +42,6 @@ void signOutUser(BuildContext context) async {
     Navigator.pushReplacementNamed(context, '/login');
   } catch (e) {
     print("Error signing out: $e");
-    // Handle sign-out errors if needed
   }
 }
 class FirebaseAuthServices {

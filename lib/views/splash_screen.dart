@@ -54,6 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   'Easy Rental Nepal',
                   style: TextStyle(
                     fontSize: 36,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                     color: GlobalColors.fontColor,
                   ),

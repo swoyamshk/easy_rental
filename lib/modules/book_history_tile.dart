@@ -97,26 +97,29 @@ Widget bookTileItem(BuildContext context,
                         children: [
                           Text(
                             carmodel,
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                            style: TextStyle(fontSize: 22,fontFamily: 'Montserrat', fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 13,),
-                          Text(
-                            carmodel,
-                            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30),
+                            child: Text(
+                              "Period",
+                              style: TextStyle(fontSize: 17,fontFamily: 'Montserrat', fontWeight: FontWeight.w300),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(width: 40),
+                      const SizedBox(width: 20),
                       Column(
                         children: [
                           Text(
                             "Rs.$totalAmount",
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                            style: TextStyle(fontSize: 22,fontFamily: 'Montserrat', fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 11,),
                           Text(
                             rentPeriod,
-                            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
+                            style: TextStyle(fontSize: 16,fontFamily: 'Montserrat', fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),

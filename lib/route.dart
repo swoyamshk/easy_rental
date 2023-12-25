@@ -1,3 +1,4 @@
+import 'package:easy_rental_nepal/components/terms_conditions.dart';
 import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:easy_rental_nepal/views/book.dart';
 import 'package:easy_rental_nepal/views/bookings.dart';
@@ -40,6 +41,8 @@ class RouteGen {
         return MaterialPageRoute(builder: (_) => const MapSample());
       case '/book':
         return MaterialPageRoute(builder: (_) => BookTiles());
+      case '/terms':
+        return MaterialPageRoute(builder: (_) => TermsAndConditionsScreen());
       default:
         return _errorRoute();
     }

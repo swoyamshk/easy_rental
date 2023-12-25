@@ -22,7 +22,7 @@ class HelpCenterState extends State<HelpCenter> {
             padding: EdgeInsets.only(left: 10),
             child: Text(
               "Help Center",
-              style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.normal),
+              style: TextStyle(color: Colors.white,fontFamily: 'Montserrat', fontSize: 26, fontWeight: FontWeight.normal),
             ),
 
           ),
@@ -31,7 +31,7 @@ class HelpCenterState extends State<HelpCenter> {
             indicatorColor: Colors.white,
             unselectedLabelColor: Colors.white60,
             labelColor: Colors.white,
-            labelStyle: TextStyle(fontSize: 18),
+            labelStyle: TextStyle(fontSize: 18,fontFamily: 'Montserrat'),
             tabs: [
               Tab(text: 'Feedback', ),
               Tab(text: 'Contact Us'),
