@@ -40,7 +40,7 @@ class ContactUs extends StatelessWidget {
                   url: 'https://www.whatsapp.com/',
                   child: const Row(
                     children: [
-                      Icon(Icons.cleaning_services,
+                      Icon(Icons.phone,
                           size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(
@@ -95,7 +95,7 @@ class ContactUs extends StatelessWidget {
                   color: Colors.white,
                   child: const Row(
                     children: [
-                      Icon(Icons.earbuds_battery,
+                      Icon(Icons.support_agent_outlined,
                           size: 25, color: Colors.black),
                       SizedBox(width: 20),
                       Text(

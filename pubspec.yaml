@@ -50,6 +50,7 @@ dependencies:
   url_launcher: ^6.2.2
   cached_network_image:
   fluttertoast: ^8.2.4
+  geolocator:
 
 
   # The following adds the Cupertino Icons font to your application.

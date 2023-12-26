@@ -148,30 +148,6 @@ class ProfileState extends State<Profile> {
                 ),
               ),
               GestureDetector(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.password,
-                          size: 30, color: GlobalColors.fontColor),
-                      // Set the icon color to red
-                      SizedBox(width: 10),
-                      Text(
-                        'Change Password',
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
                 onTap: (){
                   _navigateToBookingsTab(context);
                 },
