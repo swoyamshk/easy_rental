@@ -11,7 +11,7 @@ import '../global/globalShadow.dart';
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return HomeState(); // Corrected class name to HomeState
+    return HomeState();
   }
 }
 

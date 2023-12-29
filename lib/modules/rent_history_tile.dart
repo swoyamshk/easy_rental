@@ -88,7 +88,7 @@ Widget rentTileItem(
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 20),
               child: Align(
-                  alignment: Alignment.topLeft,
+                  alignment: Alignment.centerRight,
                   child: Row(
                     children: [
                       Column(
@@ -104,9 +104,9 @@ Widget rentTileItem(
                           ),
                         ],
                       ),
-                      const SizedBox(width: 110),
+                      const SizedBox(width: 60),
                       Align(
-                        alignment: Alignment.topRight,
+                        alignment: Alignment.centerLeft,
                         child: Column(
                           children: [
                             Text(

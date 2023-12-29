@@ -97,7 +97,7 @@ Widget bookTileItem(BuildContext context,
                         children: [
                           Text(
                             carmodel,
-                            style: TextStyle(fontSize: 22,fontFamily: 'Montserrat', fontWeight: FontWeight.w500),
+                            style: TextStyle(fontSize: 21,fontFamily: 'Montserrat', fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 13,),
                           Padding(

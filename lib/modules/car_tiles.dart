@@ -97,7 +97,7 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                     ),
                     Text(
                       carmodel,
-                      style: TextStyle(fontFamily: 'Montserrat',fontSize: 22),
+                      style: TextStyle(fontFamily: 'Montserrat',fontSize: 21),
                     ),
                     SizedBox(
                       height: 2,

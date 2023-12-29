@@ -125,7 +125,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                             ),
                             Text(
                               carmodel,
-                              style: TextStyle(fontFamily: 'Montserrat',fontSize: 22),
+                              style: TextStyle(fontFamily: 'Montserrat',fontSize: 21),
                             ),
                             SizedBox(
                               height: 2,

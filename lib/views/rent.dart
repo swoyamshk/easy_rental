@@ -147,6 +147,7 @@ class RentPageState extends State<RentPage> {
     String? selectedVehicleType;
     String? selectedSeating;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar:AppBar(
           leading: IconButton(
