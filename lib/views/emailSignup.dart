@@ -23,7 +23,7 @@ class emailSignupstate extends State<emailSignup> {
 
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-  TextEditingController passwordCcontroller = TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +76,27 @@ class emailSignupstate extends State<emailSignup> {
                               ),
                               child: Center(
                                 child: TextField(
+                                  controller: namecontroller,
+                                  decoration: InputDecoration(
+                                    hintText: 'Full Name',
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(15),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 10,),
+                            Container(
+                              height: 50,
+                              width: 339,
+                              margin: const EdgeInsets.only(bottom: 15),
+                              decoration: BoxDecoration(
+                                color: boxColor,
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [CustomBoxShadow()],
+                              ),
+                              child: Center(
+                                child: TextField(
                                   controller: emailcontroller,
                                   decoration: InputDecoration(
                                     hintText: 'Email',
@@ -100,38 +121,6 @@ class emailSignupstate extends State<emailSignup> {
                                 obscureText: !isPasswordVisible,
                                 decoration: InputDecoration(
                                   hintText: 'Password',
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(15),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      isPasswordVisible
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color: Colors.grey,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        isPasswordVisible = !isPasswordVisible;
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10,),
-                            Container(
-                              height: 50,
-                              width: 339,
-                              margin: const EdgeInsets.only(bottom: 15),
-                              decoration: BoxDecoration(
-                                  color: GlobalColors.boxColor,
-                                  borderRadius: BorderRadius.circular(30),
-                                  boxShadow: [CustomBoxShadow()]),
-                              child: TextField(
-                                controller: passwordCcontroller,
-                                obscureText: !isPasswordVisible,
-                                decoration: InputDecoration(
-                                  hintText: 'Confirm',
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.all(15),
                                   suffixIcon: IconButton(
@@ -244,11 +233,10 @@ class emailSignupstate extends State<emailSignup> {
 
   void _signup() async {
     String password = passwordcontroller.text;
-    String confirmPassword = passwordCcontroller.text;
     String email = emailcontroller.text;
+    String name = namecontroller.text;
 
-    if (password == confirmPassword) {
-      User? user = await _auth.signUp(email, password);
+      User? user = await _auth.signUp(email, password, name);
 
       if (user != null) {
         print("User successfully registered");
@@ -256,10 +244,7 @@ class emailSignupstate extends State<emailSignup> {
       } else {
         print("Error registering user");
       }
-    } else {
-      print("Passwords do not match");
     }
-  }
 
   Widget _signUpWithGoogle() {
     return Container(

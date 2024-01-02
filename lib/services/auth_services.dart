@@ -45,14 +45,45 @@ void signOutUser(BuildContext context) async {
   }
 }
 class FirebaseAuthServices {
-  Future<User?> signUp(String email, String password) async {
+  Future<User?> signUp(String email, String password, String name) async {
     try {
-      UserCredential credential = await _firebaseAuth
-          .createUserWithEmailAndPassword(email: email, password: password);
-      return credential.user;
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      User? user = userCredential.user;
+
+      // Set the display name
+      if (user != null) {
+        await user.updateProfile(displayName: name);
+      }
+
+      return user;
     } catch (e) {
-      print("Error Signing Up");
+      print("Error signing up: $e");
+      return null;
     }
+    return null;
+  }
+}
+Future<User?> signUp(String email, String password, String displayName) async {
+  try {
+    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    User? user = userCredential.user;
+
+    // Set the display name
+    if (user != null) {
+      await user.updateProfile(displayName: displayName);
+    }
+
+    return user;
+  } catch (e) {
+    print("Error signing up: $e");
     return null;
   }
 }
