@@ -117,7 +117,7 @@ class MapSampleState extends State<MapSample> {
           if (selectedLocation != null)
             Positioned(
               bottom: 80.0,
-              left: 120.0,
+              left: 115.0,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context, selectedLocation);
@@ -127,7 +127,7 @@ class MapSampleState extends State<MapSample> {
             ),
           Positioned(
             bottom: 30.0,
-            left: 140.0,
+            left: 105.0,
             child: ElevatedButton(
               onPressed: () {
                 _getCurrentLocation().then((value) {
