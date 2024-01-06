@@ -1,11 +1,13 @@
 import 'package:easy_rental_nepal/views/helpcenter.dart';
 import 'package:easy_rental_nepal/views/history.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_rental_nepal/modules/car_tiles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
 
 class Home extends StatefulWidget {
@@ -17,10 +19,11 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   var _currentIndex = 0;
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final PageController _pageController = PageController();
 
   homewidget() {
+    User? user = _auth.currentUser;
     double size = MediaQuery.of(context).size.width;
     return WillPopScope(onWillPop: ()async {
       final difference = DateTime.now().difference(timeBackPressed);
@@ -38,7 +41,71 @@ class HomeState extends State<Home> {
     },
         child: Column(
           children: [
-            const SizedBox(height: 60),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only( right:15, top: 30, left: 30),
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    margin: const EdgeInsets.only(bottom: 15),
+                    decoration: BoxDecoration(
+                      color: GlobalColors.boxColor,
+                      shape: BoxShape.circle,
+                      boxShadow: [CustomBoxShadow()],
+                    ),
+                    child: user != null && user.photoURL != null
+                        ? ClipOval(
+                      child: Image.network(
+                        user.photoURL!,
+                        width: 60,
+                        height: 60,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                        : Icon(
+                      Icons.person,
+                      size: 30,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15), // Adjust the left padding as needed
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: user != null && user.displayName != null
+                                  ? "Good Morning,\n"
+                                  : "Name",
+                              style: TextStyle(
+                                fontSize: 17, // Font size for "Good Morning"
+                                color: Colors.black,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user != null && user.displayName != null
+                                  ? user.displayName!
+                                  : "",
+                              style: TextStyle(
+                                fontSize: 20, // Font size for displayName
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+
+              ],
+            ),
             Padding(
               padding: EdgeInsets.only(left: 25, bottom: size * 0.02),
               child: Row(
@@ -129,9 +196,7 @@ class HomeState extends State<Home> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 10),
             Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,
