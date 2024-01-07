@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -82,7 +80,6 @@ Future<User?> signUp(String email, String password, String displayName) async {
     // Set the display name
     if (user != null) {
       await user.updateProfile(displayName: displayName);
-      Dialogbox.confirmDialogueBox(context, "Your Car has been rented");
     }
 
     return user;
