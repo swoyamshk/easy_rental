@@ -1,8 +1,8 @@
-import 'package:easy_rental_nepal/components/terms_conditions.dart';
+import 'package:easy_rental_nepal/views/terms_conditions.dart';
 import 'package:easy_rental_nepal/maps/mappage.dart';
 import 'package:easy_rental_nepal/views/book.dart';
 import 'package:easy_rental_nepal/views/bookings.dart';
-import 'package:easy_rental_nepal/components/contact_us.dart';
+import 'package:easy_rental_nepal/views/contact_us.dart';
 import 'package:easy_rental_nepal/views/emailSignup.dart';
 import 'package:easy_rental_nepal/views/helpcenter.dart';
 import 'package:easy_rental_nepal/views/home.dart';
@@ -10,7 +10,7 @@ import 'package:easy_rental_nepal/views/history.dart';
 import 'package:easy_rental_nepal/views/login.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:easy_rental_nepal/views/rent.dart';
-import 'package:easy_rental_nepal/views/splash_screen.dart';
+import 'package:easy_rental_nepal/components/splash_screen.dart';
 
 import 'package:flutter/material.dart';
 

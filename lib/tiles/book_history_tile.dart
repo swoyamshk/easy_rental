@@ -1,4 +1,4 @@
-import 'package:easy_rental_nepal/modules/rent_history_tile.dart';
+import 'package:easy_rental_nepal/tiles/rent_history_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -94,6 +94,7 @@ Widget bookTileItem(BuildContext context,
                     ),
                     const SizedBox(width: 20),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Rs.$totalAmount",

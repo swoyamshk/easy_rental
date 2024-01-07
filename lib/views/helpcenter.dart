@@ -1,7 +1,7 @@
-import 'package:easy_rental_nepal/components/feedback.dart';
+import 'package:easy_rental_nepal/views/feedback.dart';
 import 'package:flutter/material.dart';
 import '../global/globalColors.dart';
-import '../components/contact_us.dart';
+import 'contact_us.dart';
 
 class HelpCenter extends StatefulWidget {
   @override

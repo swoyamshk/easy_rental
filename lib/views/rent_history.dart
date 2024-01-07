@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modules/rent_history_tile.dart';
+import '../tiles/rent_history_tile.dart';
 
 class RentHistory extends StatelessWidget {
   @override

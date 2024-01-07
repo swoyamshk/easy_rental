@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_rental_nepal/modules/car_tiles.dart';
+import 'package:easy_rental_nepal/tiles/car_tiles.dart';
 import '../global/globalColors.dart';
 
 class BookTiles extends StatefulWidget {

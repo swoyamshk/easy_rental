@@ -3,7 +3,7 @@ import 'package:easy_rental_nepal/views/history.dart';
 import 'package:easy_rental_nepal/views/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_rental_nepal/modules/car_tiles.dart';
+import 'package:easy_rental_nepal/tiles/car_tiles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -44,7 +44,7 @@ class HomeState extends State<Home> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only( right:15, top: 30, left: 30),
+                  padding: const EdgeInsets.only( right:15, top: 50, left: 30),
                   child: Container(
                     height: 40,
                     width: 40,
@@ -80,7 +80,7 @@ class HomeState extends State<Home> {
                           children: [
                             TextSpan(
                               text: user != null && user.displayName != null
-                                  ? "Good Morning,\n"
+                                  ? "Good Evening,\n"
                                   : "Name",
                               style: TextStyle(
                                 fontSize: 17, // Font size for "Good Morning"

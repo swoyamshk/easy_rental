@@ -1,4 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:easy_rental_nepal/components/dialogBox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -231,20 +232,37 @@ class emailSignupstate extends State<emailSignup> {
     );
   }
 
+  bool _validateEmail(String email) {
+    RegExp emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+    return emailRegex.hasMatch(email);
+  }
+  bool _validatePassword(String password) {
+    return password.length >= 6;
+  }
+  bool _validateName(String name) {
+    return name.isNotEmpty;
+  }
+
   void _signup() async {
     String password = passwordcontroller.text;
     String email = emailcontroller.text;
     String name = namecontroller.text;
 
-      User? user = await _auth.signUp(email, password, name);
-
-      if (user != null) {
-        print("User successfully registered");
-        Navigator.pushNamed(context, "/login");
-      } else {
-        print("Error registering user");
-      }
+    if (!_validateEmail(email) || !_validatePassword(password) || !_validateName(name)) {
+      Dialogbox.warningDialogueBox(context, "Fill out the fields properly.", "Please fill out the necessary fields.");
+      return;
     }
+
+    User? user = await _auth.signUp(email, password, name);
+
+    if (user != null) {
+      Navigator.pushNamed(context, "/login");
+    } else {
+      Dialogbox.warningDialogueBox(context, "Error", "Please fill out the necessary fields.");
+
+    }
+  }
+
 
   Widget _signUpWithGoogle() {
     return Container(

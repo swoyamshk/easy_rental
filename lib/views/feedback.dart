@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
-import 'dialogBox.dart';
+import '../components/dialogBox.dart';
 
 Future<void> saveFeedbacks({
   required BuildContext context,

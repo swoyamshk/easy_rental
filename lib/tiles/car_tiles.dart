@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
 import '../views/confirm_booking.dart';
-import 'car_feature.dart';
+import '../components/car_feature.dart';
 
 class CarTiles extends StatefulWidget {
   const CarTiles({Key? key}) : super(key: key);
@@ -95,9 +95,12 @@ Widget carTileItem(BuildContext context, QueryDocumentSnapshot<Object?> carData)
                     SizedBox(
                       height: 6,
                     ),
-                    Text(
-                      carmodel,
-                      style: TextStyle(fontFamily: 'Montserrat',fontSize: 21),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Text(
+                        carmodel,
+                        style: TextStyle(fontFamily: 'Montserrat',fontSize: 21),
+                      ),
                     ),
                     SizedBox(
                       height: 2,

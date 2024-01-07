@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_rental_nepal/components/dialogBox.dart';
-import 'package:easy_rental_nepal/views/success.dart';
+import 'package:easy_rental_nepal/components/success.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../global/globalColors.dart';
 import '../global/globalShadow.dart';
-import '../modules/car_feature.dart';
+import '../components/car_feature.dart';
 
 
 class CarDetailsPage extends StatefulWidget {
@@ -65,7 +65,7 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
 
 
   String _formatDate(DateTime date) {
-    final dateFormat = DateFormat('E, dd MMM', 'en_US');
+    final dateFormat = DateFormat('dd MMM', 'en_US');
     return dateFormat.format(date);
   }
 
@@ -123,9 +123,12 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                             SizedBox(
                               height: 6,
                             ),
-                            Text(
-                              carmodel,
-                              style: TextStyle(fontFamily: 'Montserrat',fontSize: 21),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Text(
+                                carmodel,
+                                style: TextStyle(fontFamily: 'Montserrat',fontSize: 21),
+                              ),
                             ),
                             SizedBox(
                               height: 2,

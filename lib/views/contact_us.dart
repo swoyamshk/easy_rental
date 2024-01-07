@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'container_shadow.dart';
+import '../global/container_shadow.dart';
 
 class ContactUs extends StatelessWidget {
   @override
